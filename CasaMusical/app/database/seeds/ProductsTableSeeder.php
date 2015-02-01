@@ -13,8 +13,8 @@ class ProductsTableSeeder extends Seeder {
 		foreach(range(1, 50) as $index)
 		{
 			Product::create([
-				'product' => $faker->text,
-				'model' => $faker->text,
+				'product' => $faker->name,
+				'model' => $faker->name,
 				'price' => $faker->numberBetween($min = 10,$max = 2000),
 				'gain' => $faker->numberBetween($min = 10,$max = 2000),
 				'reserve' => $faker->numberBetween($min = 10,$max = 100),

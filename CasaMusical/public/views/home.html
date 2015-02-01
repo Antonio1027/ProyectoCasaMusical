@@ -1,0 +1,62 @@
+<h1 class="main-section__title">Inventario</h1>
+
+<div class="data-table-container ">
+    <table class="data-table data-table--has-primary data-table--has-secondary">
+        <thead>
+            <tr>
+                <th></th>
+                <th><strong>Nombre</strong></th>
+                <th>Modelo</th>
+                <th>Cantidad sin iva</th>
+                <th>Ganancia</th>
+                <th>Precio al publico</th>
+                <th>En existencia</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-class="{'bgc-deep-orange-50': product.status == 'pr'}" class="data-table__clickable-row" ng-repeat="product in products">
+            	
+                <td>
+                    <i class="icon icon--l icon--teal icon--circled mdi mdi--label"></i>
+                </td>
+                <td>
+                    <span>{{product.product}}</span>
+                </td>
+                <td>
+                    <span><i>{{product.model}}</i></span>
+                </td>
+                <td>
+                    <span>{{product.price | currency}}</span>
+                </td>
+                <td>
+                    <span>{{product.gain | currency}}</span>
+                </td>
+                <td>
+                    <span>{{product.price_iva | currency}}</span>
+                </td>
+                <td>
+                    <span>{{product.reserve}}</span>
+                </td>
+                <td>
+                    <lx-dropdown position="right" from-top>
+                        <button class="btn btn--l btn--black btn--icon" lx-ripple lx-dropdown-toggle>
+                            <i class="mdi mdi--more-vert"></i>
+                        </button>
+
+                        <lx-dropdown-menu>
+                            <ul>
+                                <li><a class="dropdown-link">Action</a></li>
+                                <li><a class="dropdown-link">Another action</a></li>
+                                <li><a class="dropdown-link">Something else here</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a class="dropdown-link dropdown-link--is-header">Header</a></li>
+                                <li><a class="dropdown-link">Separated link</a></li>
+                            </ul>
+                        </lx-dropdown-menu>
+                    </lx-dropdown>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

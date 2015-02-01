@@ -1,0 +1,90 @@
+[
+	{
+		"id": "001",
+		"name": "pandero",
+		"model": "",
+		"cost_s_iva": "100",
+		"gain": "",
+		"cost_c_iva": "150",
+		"quantity_exist": "",
+		"quantity_min": "",
+		"status": "r"
+	},
+	{
+		"id": "002",
+		"name": "guitarra",
+		"model": "",
+		"cost_s_iva": "100",
+		"gain": "",
+		"cost_c_iva": "150",
+		"quantity_exist": "",
+		"quantity_min": "",
+		"status": "pr"
+	},
+	{
+		"id": "003",
+		"name": "bateria",
+		"model": "",
+		"cost_s_iva": "100",
+		"gain": "",
+		"cost_c_iva": "150",
+		"quantity_exist": "",
+		"quantity_min": "",
+		"status": "pr"
+	},
+	{
+		"id": "004",
+		"name": "cuerda",
+		"model": "",
+		"cost_s_iva": "100",
+		"gain": "",
+		"cost_c_iva": "150",
+		"quantity_exist": "",
+		"quantity_min": "",
+		"status": "r"
+	},
+	{
+		"id": "005",
+		"name": "guitarra electrica",
+		"model": "",
+		"cost_s_iva": "100",
+		"gain": "",
+		"cost_c_iva": "150",
+		"quantity_exist": "",
+		"quantity_min": "",
+		"status": "r"
+	},
+	{
+		"id": "006",
+		"name": "maracas",
+		"model": "",
+		"cost_s_iva": "100",
+		"gain": "",
+		"cost_c_iva": "150",
+		"quantity_exist": "",
+		"quantity_min": "",
+		"status": "r"
+	},
+	{
+		"id": "007",
+		"name": "flauta",
+		"model": "",
+		"cost_s_iva": "100",
+		"gain": "",
+		"cost_c_iva": "150",
+		"quantity_exist": "",
+		"quantity_min": "",
+		"status": "r"
+	},
+	{
+		"id": "008",
+		"name": "soportes universales",
+		"model": "",
+		"cost_s_iva": "100",
+		"gain": "",
+		"cost_c_iva": "150",
+		"quantity_exist": "",
+		"quantity_min": "",
+		"status": "r"
+	}
+]

@@ -1,0 +1,44 @@
+<h1 class="main-section__title">Agregar un nuevo articulo</h1>
+
+<form>
+    <div class="grid mt">
+        <div class="grid__col4">
+                <lx-text-field label="Nombre del articulo" fixed-label="true" icon="person">
+                    <input type="text" ng-model="textFields.fixedFirstName">
+                </lx-text-field>
+
+                <lx-text-field label="Modelo del articulo" fixed-label="true" icon="phone">
+                    <input type="text" ng-model="textFields.fixedLastName">
+                </lx-text-field>
+                
+        </div>
+
+        <div class="grid__col4">
+                <lx-text-field label="Precio sin iva" fixed-label="true" icon="person">
+                    <input type="text" ng-model="textFields.fixedFirstName2">
+                </lx-text-field>
+
+                <lx-text-field label="Ganancias" fixed-label="true" icon="person">
+                    <input type="text" ng-model="textFields.fixedFirstName2">
+                </lx-text-field>
+
+                <lx-text-field label="Precio al publico" fixed-label="true" icon="person">
+                    <input type="text" ng-model="textFields.fixedFirstName2">
+                </lx-text-field>
+        </div>
+
+        <div class="grid__col4">
+            <lx-text-field label="Articulos en existencia" fixed-label="true" icon="email">
+                <input type="email" ng-model="textFields.fixedEmail">
+            </lx-text-field>
+
+            <lx-text-field label="Existencia minima para el pedido" fixed-label="true" icon="location-city">
+                <input type="text" ng-model="textFields.fixedAdress">
+            </lx-text-field>
+        </div>
+    </div>
+    <div class="text-center">
+        <button class="btn btn--xl btn--blue btn--fab" lx-ripple><i class="mdi mdi--add"></i></button>
+    </div>
+        
+</form>
