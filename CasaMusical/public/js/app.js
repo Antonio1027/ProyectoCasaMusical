@@ -2,7 +2,8 @@
 
 	var app = angular.module('CM', [
 		'ngRoute',
-		'controllers',
+		'cm.controllers',
+		'cm.services',
 		'lumx'
 		]);
 
@@ -13,11 +14,11 @@
 				controller: 'HomeCtrl'
 			})
 			.when('/new', {
-				templateUrl: 'views/new.html',
-				controller: 'HomeCtrl'
+				templateUrl: 'views/newarticle.html',
+				controller: 'NewArticleCtrl'
 			})
 			.when('/edit/:id', {
-				templateUrl: 'views/edit.html',
+				templateUrl: 'views/editarticle.html',
 				controller: 'HomeCtrl'
 			})
 			/*.when('/remove/:id', {

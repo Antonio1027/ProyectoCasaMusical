@@ -8,11 +8,11 @@ class ProductManager extends BaseManager
 		$rules = array(
 					'product' 		=> 'required',
 					'model'	  		=> 'required',
-					'price'	  		=> 'required',
-					'gain'	  		=> 'required',
-					'price_iva'		=> 'required',
-					'reserve'		=> 'required',
-					'reorderpoint'	=> 'required'		
+					'price'	  		=> 'required | numeric',
+					'gain'	  		=> 'required | numeric',
+					'price_iva'		=> 'required | numeric',
+					'reserve'		=> 'required | numeric',
+					'reorderpoint'	=> 'required | numeric'		
 				);
 		return $rules;
 	}

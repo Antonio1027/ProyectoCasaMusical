@@ -504,6 +504,8 @@ img {
  * 2. If a `width` and/or `height` attribute have been explicitly defined, let’s
  *    not make the image fluid.
  */
+.form-error-margin{
+  margin-left: 5em !important}
 .gm-style img,
 img[width],
 img[height] {
@@ -918,8 +920,6 @@ img[height] {
 
 .text-center {
   text-align: center !important; }
-.block-center {
-  margin: 0 auto !important; }
 
 .text-right {
   text-align: right  !important; }
