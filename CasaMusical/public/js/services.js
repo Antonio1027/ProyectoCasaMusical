@@ -30,6 +30,20 @@
 			return deferred.promise;
 		}
 
+		function updatearticle(product){
+			var deferred = $q.defer();
+
+			$http.put('updateProduct', product)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(error){
+					deferred.reject(error);
+				});
+
+			return deferred.promise;
+		}
+
 		function searcharticle(id){
 			var deferred = $q.defer();
 			$http.get('editProduct/'+id)
@@ -57,6 +71,7 @@
 		return {
 			all: all,
 			newarticle: newarticle,
+			updatearticle: updatearticle,
 			searcharticle: searcharticle,
 			removeArticle: removeArticle
 		};

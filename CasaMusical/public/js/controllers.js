@@ -68,6 +68,18 @@
 			},function(error){
 				LxNotificationService.error(error.msg);
 			});
+
+		$scope.updatearticle = function(){
+			console.log($scope.product);
+			casamusicalService.updatearticle($scope.product)
+				.then(function(data){
+						$scope.error = [];
+						LxNotificationService.success(data.msg);
+					},
+					function(error){
+						$scope.error = error.errors;
+					});
+		}
 	}]);
 
 })();
