@@ -27,7 +27,7 @@ class ProductsController extends BaseController
 			Session::put('id_product',$product->id);
 			return Response::json($product,200);//peticion exitosa
 		}	
-		return Response::json(array('errors'=>'Articulo no encontrado'),404);//recurso no encontrado
+		return Response::json(array('msg'=>'Articulo no encontrado'),404);//recurso no encontrado
 	}
 
 	public function deleteProduct($id){
