@@ -22,9 +22,11 @@ class ProductsController extends BaseController
 	}
 
 	public function editProduct($id){
+
 		$product = $this->productRepo->findProduct($id);
-		if($product){
+		if($product){			
 			Session::put('id_product',$product->id);
+			var_dump(Session::get('id_product'));
 			return Response::json($product,200);//peticion exitosa
 		}	
 		return Response::json(array('msg'=>'Articulo no encontrado'),404);//recurso no encontrado
@@ -40,11 +42,16 @@ class ProductsController extends BaseController
 
 	public function updateProduct(){		
 		$data = Input::all();
-		$product = $this->productRepo->findProduct(Session::get('id_product'));		
+		$product = $this->productRepo->findProduct($data['id']);		
 		$manager = new ProductManager($product,$data);
 		if($manager->save())
 			return Response::json(array('msg'=>'Producto actualizado'),200);//peticion exitosa
 		return Response::json(array('errors'=>$manager->getErrors()),422);//error de validacion
 	}
+
+	// public function newSales(){
+	// 	$data = Input::all();
+	// 	$product = 
+	// }
 }
  ?>
