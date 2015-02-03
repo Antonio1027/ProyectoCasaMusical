@@ -32,9 +32,21 @@
 			$http.get('editProduct/'+id)
 				.success(function(data){
 					if(data.status == 'error')
-						deferred.refect(data);
+						deferred.reject(data);
 					else
 						deferred.resolve(data);
+				});
+			return deferred.promise;
+		}
+
+		function removeArticle(id){
+			var deferred = $q.defer();
+			$http.delete('deleteProduct/'+id)
+				.success(function(data, status){
+					deferred.resolve(data);
+				})
+				.error(function(data, status){
+					deferred.reject(data);
 				});
 			return deferred.promise;
 		}
@@ -42,7 +54,8 @@
 		return {
 			all: all,
 			newarticle: newarticle,
-			searcharticle: searcharticle
+			searcharticle: searcharticle,
+			removeArticle: removeArticle
 		};
 	}])
 

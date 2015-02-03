@@ -35,7 +35,7 @@ class ProductsController extends BaseController
 		if($product)		
 			return Response::json(array('status'=>'success','msg'=>'Producto eliminado'),200);//peticion exitosa
 
-		return Response::json(array('status'=>'error','msg'=>'No pudo eliminarse el producto'),204);//no hay connido para responder
+		return Response::json(array('status'=>'error','msg'=>'No pudo eliminarse el producto'),400);//no hay connido para responder
 	}
 
 	public function updateProduct(){		
