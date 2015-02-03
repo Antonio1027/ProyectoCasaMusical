@@ -1,6 +1,25 @@
 <h1 class="main-section__title">Inventario</h1>
 
-<div class="data-table-container ">
+
+
+<div class="data-table-container" ng-controller="HomeCtrl">
+    <div class="grid mt++">
+        <div class="grid__col12">
+            <div class="card bgc-teal-300">
+                <div class="toolbar">
+                    <div class="toolbar__right">
+                        <lx-search-filter model="searchArticle" position="right" filter-width="400px" theme="dark" closed></lx-search-filter>
+    
+                        <div class="btn btn--l switch colorwhite">
+                            <input type="checkbox" id="switch1" class="switch__input"ng-model="prcb" ng-change="togglePR()">
+                            <label for="switch1" class="switch__label">Punto de pedido</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <table class="data-table data-table--has-primary data-table--has-secondary">
         <thead>
             <tr>
@@ -15,7 +34,7 @@
         </thead>
 
         <tbody>
-            <tr ng-class="{'bgc-deep-orange-50': product.status == 'pr'}" class="data-table__clickable-row" ng-repeat="product in products">
+            <tr ng-class="{'bgc-deep-orange-50': product.status == 'pr'}" class="data-table__clickable-row" ng-repeat="product in products | filter: searchArticle">
             	
                 <td>
                     <i class="icon icon--l icon--teal icon--circled mdi mdi--label"></i>

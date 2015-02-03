@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="bower_components/lumx/dist/css/lumx2.css">
 	<link rel="stylesheet" href="bower_components/lumx/dist/css/lumx.css">
 </head>
-<body ng-controller="HomeCtrl">
+<body>
 	<div class="card bgc-teal-500">
 	    <div class="toolbar">
 	        <div class="toolbar__left mr++">
@@ -32,7 +32,6 @@
 	                    </ul>
 	                </lx-dropdown-menu>
 	            </lx-dropdown>
-	    		<lx-search-filter closed theme="dark"></lx-search-filter>
 	        </div>
 	    </div>
 	</div>

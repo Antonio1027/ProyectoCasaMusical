@@ -923,6 +923,8 @@ img[height] {
 
 .text-right {
   text-align: right  !important; }
+.colorwhite{
+  color: white;}
 
 .display-block {
   display: block; }
