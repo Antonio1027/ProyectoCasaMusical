@@ -52,6 +52,7 @@
 	<script src="lib/angular-route.min.js"></script>
 	<script src="js/services.js"></script>
 	<script src="js/controllers.js"></script>
+	<script src="js/directives.js"></script>
 	<script src="js/app.js"></script>
 </body>
 </html>

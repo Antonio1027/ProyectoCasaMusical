@@ -25,12 +25,24 @@
 				});
 
 			return deferred.promise;
+		}
 
+		function searcharticle(id){
+			var deferred = $q.defer();
+			$http.get('editProduct/1')
+				.success(function(data){
+					if(data.status == 'Error')
+						deferred.refect(data);
+					else
+						deferred.resolve(data);
+				});
+			return deferred.promise;
 		}
 		
 		return {
 			all: all,
-			newarticle: newarticle
+			newarticle: newarticle,
+			searcharticle: searcharticle
 		};
 	}])
 

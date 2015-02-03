@@ -1,0 +1,62 @@
+<div class="form-article">
+    <div class="grid mt">
+        <div class="grid__col4">
+                <lx-text-field label="Nombre del articulo" fixed-label="true" icon="person" error="!form.product.$valid">
+                    <input type="text" ng-model="product.product" name="product" required>
+                </lx-text-field>
+                <ul class="form-error form-error-margin" ng-if="error.product">
+                    <li>{{error.product[0]}}</li>
+                </ul>
+
+                <lx-text-field label="Modelo del articulo" fixed-label="true" icon="phone" error="!form.model.$valid">
+                    <input type="text" ng-model="product.model" name="model" required>
+                </lx-text-field>
+                <ul class="form-error form-error-margin" ng-if="error.model">
+                    <li>{{error.model[0]}}</li>
+                </ul>
+                
+        </div>
+
+        <div class="grid__col4">
+                <lx-text-field label="Precio sin iva" fixed-label="true" icon="person" error="!form.price.$valid">
+                    <input type="text" name="price" ng-model="product.price" ng-pattern="regex_number" required>
+                </lx-text-field>
+                <ul class="form-error form-error-margin" ng-if="error.price">
+                    <li>{{error.price[0]}}</li>
+                </ul>
+
+                <lx-text-field label="Ganancias" fixed-label="true" icon="person" error="!form.gain.$valid">
+                    <input type="text" name="gain" ng-model="product.gain" ng-pattern="regex_number" required>
+                </lx-text-field>
+                <ul class="form-error form-error-margin" ng-if="error.gain">
+                    <li>{{error.gain[0]}}</li>
+                </ul>
+
+                <lx-text-field label="Precio al publico" fixed-label="true" icon="person" error="!form.price_iva.$valid">
+                    <input type="text" name="price_iva" ng-model="product.price_iva" ng-pattern="regex_number" required>
+                </lx-text-field>
+                <ul class="form-error form-error-margin" ng-if="error.price_iva">
+                    <li>{{error.price_iva[0]}}</li>
+                </ul>
+        </div>
+
+        <div class="grid__col4">
+            <lx-text-field label="Articulos en existencia" fixed-label="true" icon="email" error="!form.reserve.$valid">
+                <input type="text" name="reserve" ng-model="product.reserve" ng-pattern="regex_number" required>
+            </lx-text-field>
+            <ul class="form-error form-error-margin" ng-if="error.reserve">
+                <li>{{error.reserve[0]}}</li>
+            </ul>
+
+            <lx-text-field label="Existencia minima para el pedido" fixed-label="true" icon="location-city" error="!form.reorderpoint.$valid">
+                <input type="text" name="reorderpoint" ng-model="product.reorderpoint" ng-pattern="regex_number" required>
+            </lx-text-field>
+            <ul class="form-error form-error-margin" ng-if="error.reorderpoint">
+                <li>{{error.reorderpoint[0]}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn--xl btn--blue btn--fab" lx-ripple><i class="mdi mdi--add"></i></button>
+    </div>
+</div>

@@ -25,7 +25,7 @@ class ProductsController extends BaseController
 		$product = $this->productRepo->findProduct($id);
 		if($product)
 			return Response::json($product);
-		return Response::json(array('Articulo no encontrado'));
+		return Response::json(array('status'=>'Error','errors'=>'Articulo no encontrado'));
 	}
 }
  ?>

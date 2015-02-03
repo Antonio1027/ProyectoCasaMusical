@@ -23,6 +23,19 @@
 						$scope.error = error.Errors;
 					});
 		}
+	}])
+	.controller('EditArticleCtrl', ['$scope', '$http', 'LxNotificationService', 'casamusicalService', function ($scope, $http, LxNotificationService, casamusicalService) {
+		$scope.product = {};
+		$scope.error = [];
+		$scope.regex_number = /^[0-9]*(\.[0-9]+)?$/;
+		
+		casamusicalService.searcharticle({"id":1})
+			.then(function (data){
+				$scope.product = data;
+				console.log(data);
+			},function(error){
+				$scope.error = error;
+			});
 	}]);
 
 })();

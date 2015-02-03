@@ -4,6 +4,7 @@
 		'ngRoute',
 		'cm.controllers',
 		'cm.services',
+		'cm.directives',
 		'lumx'
 		]);
 
@@ -19,7 +20,7 @@
 			})
 			.when('/edit/:id', {
 				templateUrl: 'views/editarticle.html',
-				controller: 'HomeCtrl'
+				controller: 'EditArticleCtrl'
 			})
 			/*.when('/remove/:id', {
 				templateUrl: 'views/edit.html',
