@@ -20,7 +20,7 @@
 				.success(function(data){
 					if(data.status == "success")
 						deferred.resolve(data);
-					if(data.status == "Error")
+					if(data.status == "error")
 						deferred.reject(data);
 				});
 
@@ -29,9 +29,9 @@
 
 		function searcharticle(id){
 			var deferred = $q.defer();
-			$http.get('editProduct/1')
+			$http.get('editProduct/'+id)
 				.success(function(data){
-					if(data.status == 'Error')
+					if(data.status == 'error')
 						deferred.refect(data);
 					else
 						deferred.resolve(data);
