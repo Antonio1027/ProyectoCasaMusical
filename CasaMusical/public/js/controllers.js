@@ -1,6 +1,6 @@
 (function(){
 	angular.module('cm.controllers', [])
-	.controller('HomeCtrl', ['$scope', '$http', 'casamusicalService', function ($scope, $http, casamusicalService) {
+	.controller('HomeCtrl', ['$scope', '$http', 'LxNotificationService', 'casamusicalService', function ($scope, $http, LxNotificationService, casamusicalService) {
 		$scope.products = [];
 		var respProducts = [];
 		$scope.prcb = false;
@@ -11,6 +11,14 @@
 				});
 			else
 				$scope.products = respProducts;
+		};
+		$scope.removeArticle = function(id){
+	        LxNotificationService.confirm('¿Desea eliminar el articulo?', 'Seleccione aceptar si esta seguro de aliminar el articulo.', { cancel:'Aceptar', ok:'Rechazar' }, function(answer){
+	            if(!answer)
+	            	console.log('eliminar');
+	            else
+	            	console.log('no eliminar');
+	        });
 		};
 
 		casamusicalService.all()
@@ -36,12 +44,13 @@
 					});
 		}
 	}])
-	.controller('EditArticleCtrl', ['$scope', '$http', 'LxNotificationService', 'casamusicalService', function ($scope, $http, LxNotificationService, casamusicalService) {
+	.controller('EditArticleCtrl', ['$scope', '$http', '$routeParams', 'LxNotificationService', 'casamusicalService', function ($scope, $http, $routeParams, LxNotificationService, casamusicalService) {
 		$scope.product = {};
 		$scope.error = [];
 		$scope.regex_number = /^[0-9]*(\.[0-9]+)?$/;
+		var id = $routeParams.id;
 
-		casamusicalService.searcharticle({"id":1})
+		casamusicalService.searcharticle(id)
 			.then(function (data){
 				$scope.product = data;
 			},function(error){

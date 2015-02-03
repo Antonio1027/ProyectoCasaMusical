@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="bower_components/lumx/dist/css/lumx.css">
 </head>
 <body>
-	<div class="card bgc-teal-500">
+	<div class="card bgc-blue-grey-900">
 	    <div class="toolbar">
 	        <div class="toolbar__left mr++">
 	            <button class="btn btn--l btn--white btn--icon" lx-ripple>
