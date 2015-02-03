@@ -24,9 +24,7 @@ class ProductsController extends BaseController
 	public function editProduct($id){
 
 		$product = $this->productRepo->findProduct($id);
-		if($product){			
-			Session::put('id_product',$product->id);
-			var_dump(Session::get('id_product'));
+		if($product){
 			return Response::json($product,200);//peticion exitosa
 		}	
 		return Response::json(array('msg'=>'Articulo no encontrado'),404);//recurso no encontrado

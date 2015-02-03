@@ -70,7 +70,6 @@
 			});
 
 		$scope.updatearticle = function(){
-			console.log($scope.product);
 			casamusicalService.updatearticle($scope.product)
 				.then(function(data){
 						$scope.error = [];

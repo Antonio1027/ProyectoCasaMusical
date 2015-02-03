@@ -1,8 +1,7 @@
 <h1 class="main-section__title">Edita tu articulo</h1>
 
 <div>
-	<!-- form.$valid && -->
-    <form name="form" ng-submit="updatearticle()" novalidate>
+    <form name="form" ng-submit="form.$valid && updatearticle()" novalidate>
         <form-article></form-article>
     </form>
 </div>
