@@ -1,6 +1,6 @@
 (function(){
 	angular.module('cm.controllers', [])
-	.controller('HomeCtrl', ['$scope', '$http', 'LxNotificationService', 'casamusicalService', function ($scope, $http, LxNotificationService, casamusicalService) {
+	.controller('HomeCtrl', ['$scope', '$http', '$routeParams', 'LxNotificationService', 'casamusicalService', function ($scope, $http, $routeParams, LxNotificationService, casamusicalService) {
 		$scope.products = [];
 		var respProducts = [];
 		$scope.prcb = false;
@@ -14,10 +14,18 @@
 		};
 		$scope.removeArticle = function(id){
 	        LxNotificationService.confirm('¿Desea eliminar el articulo?', 'Seleccione aceptar si esta seguro de aliminar el articulo.', { cancel:'Aceptar', ok:'Rechazar' }, function(answer){
-	            if(!answer)
-	            	console.log('eliminar');
-	            else
-	            	console.log('no eliminar');
+	            if(!answer){
+	            	casamusicalService.removeArticle(id)
+	            		.then(function(data){
+	            			LxNotificationService.success(data.msg);
+	            			$scope.products = $scope.products.filter(function(element){
+	            				return element.id != id;
+	            			});
+	            		},
+	            		function(data){
+	            			LxNotificationService.error(data.msg);
+	            		});
+	            }
 	        });
 		};
 
