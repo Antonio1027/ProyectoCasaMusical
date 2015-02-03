@@ -13,6 +13,14 @@ class ProductsRepo extends \Eloquent
 	public function findProduct($id){
 		return Product::find($id);		
 	}
+
+	public function deleteProduct($id){
+		$producto = Product::find($id);
+		if($producto)
+			return $producto->delete();
+		else
+			return false;
+	}
 }
 
  ?>

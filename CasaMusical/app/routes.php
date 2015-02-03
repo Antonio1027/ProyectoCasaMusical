@@ -21,6 +21,6 @@ Route::get('editProduct/{id}',array('as'=>'editProduct','uses'=>'ProductsControl
 Route::put('updateProduct',array('as'=>'updateProduct','uses'=>'ProductsController@updateProduct'));
 
 Route::post('newProduct',array('as'=>'newProduct','uses'=>'ProductsController@newProduct'));
-Route::post('deleteProduct',array('as'=>'deleteProduct','uses'=>'ProductsController@deleteProduct'));
+Route::delete('deleteProduct/{id}',array('as'=>'deleteProduct','uses'=>'ProductsController@deleteProduct'));
 
 Route::get('reorderPointProducts',array('as'=>'reorderPointProducts','uses'=>'UtilsController@reorderPointProducts'));
