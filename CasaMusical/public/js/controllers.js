@@ -12,6 +12,7 @@
 			else
 				$scope.products = respProducts;
 		};
+
 		$scope.removeArticle = function(id){
 	        LxNotificationService.confirm('¿Desea eliminar el articulo?', 'Seleccione aceptar si esta seguro de aliminar el articulo.', { cancel:'Aceptar', ok:'Rechazar' }, function(answer){
 	            if(!answer){
@@ -33,6 +34,9 @@
 			.then(function (data){
 				$scope.products = data;
 				respProducts = data;
+			},
+			function(error){
+				LxNotificationService.error(error.msg);
 			});
 	}])
 	.controller('NewArticleCtrl', ['$scope', '$http', 'LxNotificationService', 'casamusicalService', function ($scope, $http, LxNotificationService, casamusicalService) {
@@ -45,10 +49,10 @@
 				.then(function(data){
 						$scope.product = {};
 						$scope.error = [];
-						LxNotificationService.success('Articulo agregado con exito');
+						LxNotificationService.success(data.msg);
 					},
 					function(error){
-						$scope.error = error.Errors;
+						$scope.error = error.errors;
 					});
 		}
 	}])
@@ -62,7 +66,7 @@
 			.then(function (data){
 				$scope.product = data;
 			},function(error){
-				$scope.error = error;
+				LxNotificationService.error(error.msg);
 			});
 	}]);
 

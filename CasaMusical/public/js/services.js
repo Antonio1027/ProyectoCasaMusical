@@ -8,6 +8,9 @@
 			$http.get('products')
 			.success(function(data){
 				deferred.resolve(data);
+			})
+			.error(function(error){
+				deferred.reject(error);
 			});
 
 			return deferred.promise;
@@ -18,10 +21,10 @@
 
 			$http.post('newProduct', product)
 				.success(function(data){
-					if(data.status == "success")
-						deferred.resolve(data);
-					if(data.status == "error")
-						deferred.reject(data);
+					deferred.resolve(data);
+				})
+				.error(function(error){
+					deferred.reject(error);
 				});
 
 			return deferred.promise;
@@ -31,22 +34,22 @@
 			var deferred = $q.defer();
 			$http.get('editProduct/'+id)
 				.success(function(data){
-					if(data.status == 'error')
-						deferred.reject(data);
-					else
-						deferred.resolve(data);
+					deferred.resolve(data);
+				})
+				.error(function(error){
+					deferred.reject(error);
 				});
 			return deferred.promise;
 		}
-
+		
 		function removeArticle(id){
 			var deferred = $q.defer();
 			$http.delete('deleteProduct/'+id)
 				.success(function(data, status){
 					deferred.resolve(data);
 				})
-				.error(function(data, status){
-					deferred.reject(data);
+				.error(function(error, status){
+					deferred.reject(error);
 				});
 			return deferred.promise;
 		}
