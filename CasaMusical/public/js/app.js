@@ -22,10 +22,10 @@
 				templateUrl: 'views/editarticle.html',
 				controller: 'EditArticleCtrl'
 			})
-			/*.when('/remove/:id', {
-				templateUrl: 'views/edit.html',
-				controller: 'HomeCtrl'
-			})*/
+			.when('/sales', {
+				templateUrl: 'views/sales.html',
+				controller: 'SalesCtrl'
+			})
 			.otherwise({
 				redirectTo: '/'
 			})

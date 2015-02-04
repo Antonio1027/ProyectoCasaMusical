@@ -1,44 +1,7 @@
-<h1 class="main-section__title">Inventario</h1>
-
-<lx-dialog class="dialog dialog--l" id="test" onclose="closingDialog()">
-    <div class="dialog__header">
-        <div class="toolbar bgc-light-blue-500 pl++">
-            <span class="toolbar__label tc-white fs-title">
-                Ventas
-            </span>
-
-            <div class="toolbar__right">
-                <button class="btn btn--l btn--white btn--icon" lx-ripple ng-click="addPerson()">
-                    <i class="mdi mdi-plus"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div class="dialog__content">
-        <lx-tabs links-tc="light" links-bgc="light-blue-500" indicator="yellow-500" no-divider="true" layout="inline">
-            <lx-tab heading="Articulo">
-                <div class="p++">
-                    <div flex-container="row" flex-gutter="24">
-                        <div flex-item>
-                            <lx-text-field label="Cantidad de articulos">
-                                <input type="number" ng-model="productSale.quantity">
-                            </lx-text-field>
-                        </div>
-                    </div>
-                </div>
-            </lx-tab>
-        </lx-tabs>
-    </div>
-
-    <div class="dialog__actions">
-        <button class="btn btn--m btn--black btn--flat" lx-ripple lx-dialog-close>Cancelar</button>
-        <button class="btn btn--m btn--black btn--flat" lx-ripple ng-click="sales()">Aceptar</button>
-    </div>
-</lx-dialog>
+<h1 class="main-section__title">Ventas</h1>
 
 <div class="data-table-container">
-    <div class="grid mt++">
+    <!-- <div class="grid mt++">
         <div class="grid__col12">
             <div class="card bgc-blue-grey-700">
                 <div class="toolbar">
@@ -53,18 +16,16 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     
     <table class="data-table data-table--has-primary data-table--has-secondary">
         <thead>
             <tr>
                 <th></th>
                 <th><strong>Nombre</strong></th>
-                <th>Modelo</th>
-                <th>Cantidad sin iva</th>
-                <th>Ganancia</th>
-                <th>Precio al publico</th>
-                <th>En existencia</th>
+                <th><strong>Modelo</strong></th>
+                <th><strong>Cantidad</strong></th>
+                <th><strong>Precio</strong></th>
             </tr>
         </thead>
 
@@ -85,13 +46,7 @@
                 </td>
                 <td>
                     <span>{{product.gain | currency}}</span>
-                </td>
-                <td>
-                    <span>{{product.price_iva | currency}}</span>
-                </td>
-                <td>
-                    <span>{{product.reserve}}</span>
-                </td>
+                </td>                
                 <td>
                     <lx-dropdown position="right" from-top>
                         <button class="btn btn--l btn--black btn--icon" lx-ripple lx-dropdown-toggle>
@@ -104,7 +59,6 @@
                                 <li>
                                     <a class="dropdown-link" ng-click="removeArticle(product.id)">Eliminar</a>
                                 </li>
-                                <li><a class="dropdown-link" ng-click="opendDialog('test', product.id)">Realizar una venta</a></li>
                                 <li class="dropdown-divider"></li>
                                 <li><a class="dropdown-link dropdown-link--is-header">Header</a></li>
                                 <li><a class="dropdown-link">Separated link</a></li>

@@ -26,7 +26,7 @@
 	                <lx-dropdown-menu>
 	                    <ul>
 	                        <li><a href="#/new" class="dropdown-link">Agregar nuevo producto</a></li>
-	                        <li><a href="#/remove" class="dropdown-link">Eliminar producto</a></li>
+	                        <li><a href="#/sales" class="dropdown-link">Ver ventas</a></li>
 	                        <li class="dropdown-divider"></li>
 	                        <li><a href="#/statistics" class="dropdown-link">Estadisticas</a></li>
 	                    </ul>

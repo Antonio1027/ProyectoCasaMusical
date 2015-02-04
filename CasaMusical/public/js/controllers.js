@@ -1,9 +1,12 @@
 (function(){
 	angular.module('cm.controllers', [])
-	.controller('HomeCtrl', ['$scope', '$http', '$routeParams', 'LxNotificationService', 'casamusicalService', function ($scope, $http, $routeParams, LxNotificationService, casamusicalService) {
+	.controller('HomeCtrl', ['$scope', '$http', '$routeParams', 'LxNotificationService', 'LxDialogService', 'casamusicalService', function ($scope, $http, $routeParams, LxNotificationService, LxDialogService, casamusicalService) {
 		$scope.products = [];
 		var respProducts = [];
+		$scope.productSale = [];
+		$scope.number = 0;
 		$scope.prcb = false;
+
 		$scope.togglePR = function(){
 			if($scope.prcb)
 				$scope.products = respProducts.filter(function(element){
@@ -28,6 +31,21 @@
 	            		});
 	            }
 	        });
+		};
+
+		$scope.sales = function(){
+		    LxDialogService.close('test');
+
+			LxNotificationService.success('success');
+		};
+
+		$scope.opendDialog = function(dialogId, id){
+			$scope.productSale.id = id;
+		    LxDialogService.open(dialogId);
+		};
+
+		$scope.closingDialog = function(){
+			$scope.number = 0;
 		};
 
 		casamusicalService.all()
@@ -55,6 +73,19 @@
 						$scope.error = error.errors;
 					});
 		}
+	}])
+	.controller('SalesCtrl', ['$scope', 'casamusicalService', function ($scope, casamusicalService) {
+		$scope.products = [];
+		$scope.number = 0;
+
+		casamusicalService.all()
+			.then(function (data){
+				$scope.products = data;
+			},
+			function(error){
+				LxNotificationService.error(error.msg);
+			});
+
 	}])
 	.controller('EditArticleCtrl', ['$scope', '$http', '$routeParams', 'LxNotificationService', 'casamusicalService', function ($scope, $http, $routeParams, LxNotificationService, casamusicalService) {
 		$scope.product = {};
