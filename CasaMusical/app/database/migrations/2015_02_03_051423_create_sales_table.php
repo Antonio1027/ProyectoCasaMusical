@@ -19,6 +19,7 @@ class CreateSalesTable extends Migration {
 			$table->string('model');
 			$table->integer('quantity')->unsigned();
 			$table->float('price')->unsigned();
+			$table->float('total')->unsigned();
 			$table->timestamps();
 		});
 	}

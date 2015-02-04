@@ -45,11 +45,6 @@ class ProductsController extends BaseController
 		if($manager->save())
 			return Response::json(array('msg'=>'Producto actualizado'),200);//peticion exitosa
 		return Response::json(array('errors'=>$manager->getErrors()),422);//error de validacion
-	}
-
-	// public function newSales(){
-	// 	$data = Input::all();
-	// 	$product = 
-	// }
+	}	
 }
  ?>

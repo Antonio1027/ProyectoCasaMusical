@@ -17,10 +17,13 @@ Route::get('/', function()
 });
 
 Route::get('products',array('as'=>'products','uses'=>'UtilsController@products'));
+Route::get('sales',array('as'=>'sales','uses'=>'SalesController@sales'));
+
 Route::get('editProduct/{id}',array('as'=>'editProduct','uses'=>'ProductsController@editProduct'));
 Route::put('updateProduct',array('as'=>'updateProduct','uses'=>'ProductsController@updateProduct'));
 
 Route::post('newProduct',array('as'=>'newProduct','uses'=>'ProductsController@newProduct'));
+Route::post('newSale',array('as'=>'newSale','uses'=>'SalesController@newSale'));
+
 Route::delete('deleteProduct/{id}',array('as'=>'deleteProduct','uses'=>'ProductsController@deleteProduct'));
-Route::put('newSale',array('as'=>'newSale','uses'=>'ProductsController@newSale'));
 Route::get('reorderPointProducts',array('as'=>'reorderPointProducts','uses'=>'UtilsController@reorderPointProducts'));
