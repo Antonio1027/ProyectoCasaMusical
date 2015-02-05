@@ -6,7 +6,7 @@ use CasaMusical\Entities\Sale;
 class SalesRepo extends \Eloquent
 {
 	public function allSales(){
-		return Sale::all();
+		return Sale::orderBy('created_at','Desc')->get();
 	}	
 
 	public function newSale($product,$quantity){

@@ -1,7 +1,7 @@
 <h1 class="main-section__title">Ventas</h1>
 
 <div class="data-table-container">
-    <!-- <div class="grid mt++">
+    <div class="grid mt++">
         <div class="grid__col12">
             <div class="card bgc-blue-grey-700">
                 <div class="toolbar">
@@ -12,11 +12,12 @@
                             <input type="checkbox" id="switch1" class="switch__input"ng-model="prcb" ng-change="togglePR()">
                             <label for="switch1" class="switch__label">Punto de pedido</label>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     
     <table class="data-table data-table--has-primary data-table--has-secondary">
         <thead>
@@ -26,6 +27,8 @@
                 <th><strong>Modelo</strong></th>
                 <th><strong>Cantidad</strong></th>
                 <th><strong>Precio</strong></th>
+                <th><strong>Total</strong></th>
+                <th><strong>Fecha</strong></th>
             </tr>
         </thead>
 
@@ -42,11 +45,19 @@
                     <span><i>{{product.model}}</i></span>
                 </td>
                 <td>
+                    <span>{{product.quantity}}</span>
+                </td>
+                <td>
                     <span>{{product.price | currency}}</span>
                 </td>
                 <td>
-                    <span>{{product.gain | currency}}</span>
+                    <span>{{product.total | currency}}</span>
                 </td>                
+                <td>
+                    <span>
+                        {{product.date | date: medium}}
+                    </span>
+                </td>
                 <td>
                     <lx-dropdown position="right" from-top>
                         <button class="btn btn--l btn--black btn--icon" lx-ripple lx-dropdown-toggle>

@@ -35,7 +35,7 @@ class SalesController extends BaseController
 				return Response::json(array('msg'=>'Venta no registrada'),422);
 			}		
 			else
-				return Response::json(array('msg'=>'No hay articulos suficientes para realizar la venta'));				
+				return Response::json(array('msg'=>'No hay articulos suficientes para realizar la venta'),422);				
 		}
 		else return Response::json(array('msg','Producto no encontrado'),404);
 	}

@@ -15,6 +15,19 @@
 
 			return deferred.promise;
 		}
+		function salesall(){
+			var deferred = $q.defer();
+
+			$http.get('sales')
+			.success(function(data){
+				deferred.resolve(data);
+			})
+			.error(function(error){
+				deferred.reject(error);
+			});
+
+			return deferred.promise;
+		}
 
 		function newarticle(product){
 			var deferred = $q.defer();
@@ -24,6 +37,21 @@
 					deferred.resolve(data);
 				})
 				.error(function(error){
+					deferred.reject(error);
+				});
+
+			return deferred.promise;
+		}
+		function newsale(product){
+			var deferred = $q.defer();
+			console.log(product);
+
+			$http.post('newSale', product)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(error){
+					console.log(error);
 					deferred.reject(error);
 				});
 
@@ -56,23 +84,27 @@
 			return deferred.promise;
 		}
 		
-		function removeArticle(id){
-			var deferred = $q.defer();
-			$http.delete('deleteProduct/'+id)
-				.success(function(data, status){
-					deferred.resolve(data);
-				})
-				.error(function(error, status){
-					deferred.reject(error);
-				});
-			return deferred.promise;
+		function removeArticle(id){
+			var deferred = $q.defer();
+
+			$http.delete('deleteProduct/'+id)
+				.success(function(data, status){
+					deferred.resolve(data);
+				})
+				.error(function(error, status){
+					deferred.reject(error);
+				});
+
+			return deferred.promise;
 		}
 		
 		return {
 			all: all,
+			salesall: salesall,
 			newarticle: newarticle,
+			newsale: newsale,
 			updatearticle: updatearticle,
-			searcharticle: searcharticle,
+			searcharticle: searcharticle,
 			removeArticle: removeArticle
 		};
 	}])

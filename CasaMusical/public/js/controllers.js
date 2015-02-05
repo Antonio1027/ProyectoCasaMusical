@@ -3,7 +3,7 @@
 	.controller('HomeCtrl', ['$scope', '$http', '$routeParams', 'LxNotificationService', 'LxDialogService', 'casamusicalService', function ($scope, $http, $routeParams, LxNotificationService, LxDialogService, casamusicalService) {
 		$scope.products = [];
 		var respProducts = [];
-		$scope.productSale = [];
+		$scope.productSale = {};
 		$scope.number = 0;
 		$scope.prcb = false;
 
@@ -35,22 +35,35 @@
 
 		$scope.sales = function(){
 		    LxDialogService.close('test');
-
-			LxNotificationService.success('success');
+		    $scope.productSale.date = Date.now();
+			casamusicalService.newsale($scope.productSale)
+				.then(function(data){
+						LxNotificationService.success(data.msg);
+						$scope.products = $scope.products.filter(function(element){
+							if(element.id == $scope.productSale.id)
+								element.reserve = element.reserve - $scope.productSale.quantity;							
+							return element;
+						});						
+					},
+					function(error){
+						LxNotificationService.error(error.msg);
+					});
 		};
 
 		$scope.opendDialog = function(dialogId, id){
 			$scope.productSale.id = id;
+			$scope.productSale.quantity = '';
 		    LxDialogService.open(dialogId);
 		};
 
 		$scope.closingDialog = function(){
-			$scope.number = 0;
+			$scope.number = 0;			
+
 		};
 
 		casamusicalService.all()
 			.then(function (data){
-				$scope.products = data;
+				$scope.products = data;				
 				respProducts = data;
 			},
 			function(error){
@@ -76,16 +89,14 @@
 	}])
 	.controller('SalesCtrl', ['$scope', 'casamusicalService', function ($scope, casamusicalService) {
 		$scope.products = [];
-		$scope.number = 0;
 
-		casamusicalService.all()
+		casamusicalService.salesall()
 			.then(function (data){
 				$scope.products = data;
 			},
 			function(error){
 				LxNotificationService.error(error.msg);
 			});
-
 	}])
 	.controller('EditArticleCtrl', ['$scope', '$http', '$routeParams', 'LxNotificationService', 'casamusicalService', function ($scope, $http, $routeParams, LxNotificationService, casamusicalService) {
 		$scope.product = {};
