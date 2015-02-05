@@ -27,7 +27,7 @@ class SalesController extends BaseController
 		if($product && $data){
 			$reserve = $product->reserve - $data['quantity'];
 			if($reserve >=  0){				
-				$sale = $this->salesRepo->newSale($product,$data['quantity']);	
+				$sale = $this->salesRepo->newSale($product,$data['quantity'],$data['date']);	
 				$product->reserve = $reserve;
 				if($sale->save() && $product->save())
 					return Response::json(array('msg'=>'Venta registrada'),201);

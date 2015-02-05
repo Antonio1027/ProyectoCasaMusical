@@ -9,13 +9,14 @@ class SalesRepo extends \Eloquent
 		return Sale::orderBy('created_at','Desc')->get();
 	}	
 
-	public function newSale($product,$quantity){
+	public function newSale($product,$quantity,$date){
 		$sale = new Sale();	
 		$sale->product = $product->product;
 		$sale->model = $product->model;
 		$sale->quantity = $quantity;
-		$sale->price = $product->price;
-		$sale->total = $product->price * $quantity;
+		$sale->price = $product->price_iva;
+		$sale->total = $product->price_iva * $quantity;
+		$sale->date = $date;
 		return $sale;		
 	}
 }

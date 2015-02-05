@@ -22,13 +22,13 @@ class ProductsTableSeeder extends Seeder {
 				'reserve' => $faker->numberBetween($min = 10,$max = 100),
 				'status' => $faker->randomElement(['r','pr'])
 			]);
-			Sale::create([
-				'product' => $producto->product,
-				'model' => $producto->model,
-				'price' => $producto->price,
-				'quantity' => $faker->numberBetween($min = 1,$max = 10),
-				'total' => $faker->numberBetween($min = 10,$max = 2000)
-			]);
+			// Sale::create([
+			// 	'product' => $producto->product,
+			// 	'model' => $producto->model,
+			// 	'price' => $producto->price,
+			// 	'quantity' => $faker->numberBetween($min = 1,$max = 10),
+			// 	'total' => $faker->numberBetween($min = 10,$max = 2000)
+			// ]);
 		}
 	}
 

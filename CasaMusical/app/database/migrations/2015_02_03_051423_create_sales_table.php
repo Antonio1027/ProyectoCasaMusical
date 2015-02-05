@@ -17,9 +17,10 @@ class CreateSalesTable extends Migration {
 			$table->increments('id');
 			$table->string('product');
 			$table->string('model');
-			$table->integer('quantity')->unsigned();
+			$table->integer('quantity')->unsigned();			
 			$table->float('price')->unsigned();
 			$table->float('total')->unsigned();
+			$table->string('date')->nullable();
 			$table->timestamps();
 		});
 	}
