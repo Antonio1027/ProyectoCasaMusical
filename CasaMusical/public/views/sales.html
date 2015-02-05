@@ -1,5 +1,6 @@
 <h1 class="main-section__title">Ventas</h1>
 
+
 <div class="data-table-container">
     <div class="grid mt++">
         <div class="grid__col12">
@@ -7,18 +8,20 @@
                 <div class="toolbar">
                     <div class="toolbar__right">
                         <lx-search-filter model="searchArticle" position="right" filter-width="400px" theme="dark" closed></lx-search-filter>
-    
-                        <div class="btn btn--l switch colorwhite">
-                            <input type="checkbox" id="switch1" class="switch__input"ng-model="prcb" ng-change="togglePR()">
-                            <label for="switch1" class="switch__label">Punto de pedido</label>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
+    <div class="grid mt++">
+        <div class="grid__col6">
+            <lx-date-picker model="date.start" label="Fecha de inicio"></lx-date-picker>
+        </div>
+        <div class="grid__col6">
+            <lx-date-picker model="date.end" label="Fecha final"></lx-date-picker>  
+        </div>
+    </div>
     <table class="data-table data-table--has-primary data-table--has-secondary">
         <thead>
             <tr>

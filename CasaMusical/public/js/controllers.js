@@ -89,6 +89,7 @@
 	}])
 	.controller('SalesCtrl', ['$scope', 'casamusicalService', function ($scope, casamusicalService) {
 		$scope.products = [];
+		$date = [];
 
 		casamusicalService.salesall()
 			.then(function (data){
@@ -122,5 +123,4 @@
 					});
 		}
 	}]);
-
 })();

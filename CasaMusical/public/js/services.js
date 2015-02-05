@@ -44,14 +44,12 @@
 		}
 		function newsale(product){
 			var deferred = $q.defer();
-			console.log(product);
 
 			$http.post('newSale', product)
 				.success(function(data){
 					deferred.resolve(data);
 				})
 				.error(function(error){
-					console.log(error);
 					deferred.reject(error);
 				});
 
