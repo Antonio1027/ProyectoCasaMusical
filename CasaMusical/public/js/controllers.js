@@ -4,6 +4,7 @@
 		$scope.products = [];
 		var respProducts = [];
 		$scope.productSale = {};
+		$scope.regex_number = /^[0-9]*$/;
 		$scope.number = 0;
 		$scope.prcb = false;
 
@@ -34,31 +35,37 @@
 		};
 
 		$scope.sales = function(){
-		    LxDialogService.close('test');
 		    $scope.productSale.date = Date.now();
-			casamusicalService.newsale($scope.productSale)
-				.then(function(data){
-						LxNotificationService.success(data.msg);
+
+		    if( angular.isNumber($scope.productSale.quantity) && $scope.productSale.quantity % 1 == 0 && $scope.productSale.quantity > 0){
+				casamusicalService.newsale($scope.productSale)
+					.then(function(data){
 						$scope.products = $scope.products.filter(function(element){
-							if(element.id == $scope.productSale.id)
-								element.reserve = element.reserve - $scope.productSale.quantity;							
+							if(element.id == $scope.productSale.id){
+								element.reserve = element.reserve - $scope.productSale.quantity;
+							}
 							return element;
 						});						
+						LxNotificationService.success(data.msg);
+		    			LxDialogService.close('test');
 					},
 					function(error){
 						LxNotificationService.error(error.msg);
 					});
+			}
+			else
+				LxNotificationService.warning('La cantidad de articulos debe ser un entero');
+
+
 		};
 
 		$scope.opendDialog = function(dialogId, id){
 			$scope.productSale.id = id;
-			$scope.productSale.quantity = '';
 		    LxDialogService.open(dialogId);
 		};
 
 		$scope.closingDialog = function(){
-			$scope.number = 0;			
-
+			$scope.productSale.quantity = 0;
 		};
 
 		casamusicalService.all()
@@ -87,13 +94,35 @@
 					});
 		}
 	}])
-	.controller('SalesCtrl', ['$scope', 'casamusicalService', function ($scope, casamusicalService) {
+	.controller('SalesCtrl', ['$scope', 'LxNotificationService', 'casamusicalService', function ($scope, LxNotificationService, casamusicalService) {
+
 		$scope.products = [];
-		$date = [];
+		$scope.productsresp = [];
+		$scope.date = [];
+
+
+		$scope.datechange = function(){
+			var date = [];
+			if($scope.date.start){
+				date.start = Date.parse($scope.date.start);
+				if($scope.date.end)
+					date.end = Date.parse($scope.date.end) + 86400000;
+				else
+					date.end = Date.parse($scope.date.start) + 86400000;
+				
+				$scope.products = $scope.productsresp.filter(function(element){
+					if( element.date >= date.start && element.date < date.end )
+						return element;
+				});
+			}
+			else
+				LxNotificationService.warning('Debe seleccionar por lo menos la fecha de inicio');
+		};
 
 		casamusicalService.salesall()
 			.then(function (data){
 				$scope.products = data;
+				$scope.productsresp = data;
 			},
 			function(error){
 				LxNotificationService.error(error.msg);

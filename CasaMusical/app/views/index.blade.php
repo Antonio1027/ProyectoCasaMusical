@@ -26,9 +26,7 @@
 	                <lx-dropdown-menu>
 	                    <ul>
 	                        <li><a href="#/new" class="dropdown-link">Agregar nuevo producto</a></li>
-	                        <li><a href="#/sales" class="dropdown-link">Ver ventas</a></li>
-	                        <li class="dropdown-divider"></li>
-	                        <li><a href="#/statistics" class="dropdown-link">Estadisticas</a></li>
+	                        <li><a href="#/sales" class="dropdown-link">Ver ventas</a></li>	                        
 	                    </ul>
 	                </lx-dropdown-menu>
 	            </lx-dropdown>
@@ -49,6 +47,7 @@
 
 	<!-- Scripts Angular-->
 	<script src="lib/angular-route.min.js"></script>
+	<script src="lib/angular-locale_es-mx.js"></script>
 	<script src="js/services.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/directives.js"></script>
