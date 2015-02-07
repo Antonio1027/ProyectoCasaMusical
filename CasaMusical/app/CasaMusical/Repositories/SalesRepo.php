@@ -6,15 +6,16 @@ use CasaMusical\Entities\Sale;
 class SalesRepo extends \Eloquent
 {
 	public function allSales(){
-		return Sale::orderBy('created_at','Desc')->get();
+		return Sale::join('products','sales.product_id','=','products.id')
+					->orderBy('sales.created_at','Desc')
+					->select('sales.*','products.price','products.product','products.model')
+					->get();
 	}	
 
 	public function newSale($product,$quantity,$date){
 		$sale = new Sale();	
-		$sale->product = $product->product;
-		$sale->model = $product->model;
-		$sale->quantity = $quantity;
-		$sale->price = $product->price_iva;
+		$sale->product_id = $product->id;		
+		$sale->quantity = $quantity;		
 		$sale->total = $product->price_iva * $quantity;
 		$sale->date = $date;
 		return $sale;		

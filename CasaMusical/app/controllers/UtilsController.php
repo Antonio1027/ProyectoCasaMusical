@@ -18,12 +18,14 @@ class UtilsController extends BaseController
 		else
 			return Response::json(array('msg'=>'No se encontraron productos'),404);
 		return Response::json($products);
-	}		
-	// public function reorderPointProducts(){
-	// 	$product = Input::get('product');
-	// 	$products = $this->utilRepo->reorderPointProducts($product);
-	// 	return Response::json($products->count());
-	// }
+	}
+
+	public function providersList(){		
+		$providersList = $this->utilRepo->providersList();
+		if($providersList)
+			return Response::json($providersList,200);
+		return Reponse::json(array('msg'=>'No se encontraron proveedores'),404);
+	}
 }
 
  ?>

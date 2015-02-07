@@ -20,15 +20,16 @@ class ProductsTableSeeder extends Seeder {
 				'gain' => $faker->numberBetween($min = 10,$max = 2000),
 				'price' => $faker->numberBetween($min = 10,$max = 2000),
 				'reserve' => $faker->numberBetween($min = 10,$max = 100),
-				'status' => $faker->randomElement(['r','pr'])
+				'status' => $faker->randomElement(['r','pr']),
+				'provider_id' => $faker->numberBetween($min = 1,$max = 10)
 			]);
-			// Sale::create([
-			// 	'product' => $producto->product,
-			// 	'model' => $producto->model,
-			// 	'price' => $producto->price,
-			// 	'quantity' => $faker->numberBetween($min = 1,$max = 10),
-			// 	'total' => $faker->numberBetween($min = 10,$max = 2000)
-			// ]);
+
+			Sale::create([
+				'date' => $faker->date,				
+				'quantity' => $faker->numberBetween($min = 1,$max = 10),
+				'total' => $faker->numberBetween($min = 10,$max = 2000),
+				'product_id' => $producto->id								
+			]);			
 		}
 	}
 

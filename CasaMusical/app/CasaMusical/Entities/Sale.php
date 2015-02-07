@@ -8,6 +8,7 @@ class Sale extends \Eloquent {
 							'model',
 							'quantity',
 							'price',
-							'total'
+							'total',
+							'product_id'
 						];
 }

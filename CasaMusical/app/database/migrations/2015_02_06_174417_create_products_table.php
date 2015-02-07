@@ -15,14 +15,19 @@ class CreateProductsTable extends Migration {
 		Schema::create('products', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('key');
 			$table->string('product');
 			$table->string('model');
 			$table->float('price')->unsigned();
 			$table->float('gain')->unsigned();
 			$table->float('price_iva')->unsigned();
 			$table->integer('reorderpoint')->unsigned();
-			$table->integer('reserve')->unsigned();			
-			$table->enum('status',['r','pr']);
+			$table->integer('reserve')->unsigned();					
+			$table->enum('status',['r','pr']);			
+
+			$table->integer('provider_id')->unsigned();
+			$table->foreign('provider_id')->references('id')->on('providers');
+
 			$table->timestamps();			
 		});
 	}

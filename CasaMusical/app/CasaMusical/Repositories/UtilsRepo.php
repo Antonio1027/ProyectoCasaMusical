@@ -2,6 +2,7 @@
 
 namespace CasaMusical\Repositories;
 use CasaMusical\Entities\Product;
+use CasaMusical\Entities\Provider;
 
 class UtilsRepo extends \Eloquent
 {
@@ -14,6 +15,9 @@ class UtilsRepo extends \Eloquent
 						->where('product','LIKE','%'.$product.'%')
 						->get();
 	} 
+	public function providersList(){		
+		return Provider::lists('name','id');
+	}
 }
 
  ?>

@@ -14,13 +14,13 @@ class CreateSalesTable extends Migration {
 	{
 		Schema::create('sales', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->string('product');
-			$table->string('model');
-			$table->integer('quantity')->unsigned();			
-			$table->float('price')->unsigned();
+			$table->increments('id');			
+			$table->integer('quantity')->unsigned();						
 			$table->float('total')->unsigned();
 			$table->string('date')->nullable();
+
+			$table->integer('product_id')->unsigned();
+			$table->foreign('product_id')->references('id')->on('products');
 			$table->timestamps();
 		});
 	}
