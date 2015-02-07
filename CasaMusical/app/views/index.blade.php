@@ -10,26 +10,13 @@
 <body>
 	<div class="card bgc-blue-grey-900">
 	    <div class="toolbar">
-	        <div class="toolbar__left mr++">
-	            <button class="btn btn--l btn--white btn--icon" lx-ripple>
-	                <i class="mdi mdi--menu"></i>
-	            </button>
-	        </div>
 
 	        <a href="#/"><span class="toolbar__label tc-white-1 fs-title ml">Casa Musical</span></a>
 
 	        <div class="toolbar__right">
-	            <lx-dropdown position="right" from-top>
-	                <button class="btn btn--l btn--white btn--icon" lx-ripple lx-dropdown-toggle>
-	                    <i class="mdi mdi--more-vert"></i>
-	                </button>
-	                <lx-dropdown-menu>
-	                    <ul>
-	                        <li><a href="#/new" class="dropdown-link">Agregar nuevo producto</a></li>
-	                        <li><a href="#/sales" class="dropdown-link">Ver ventas</a></li>	                        
-	                    </ul>
-	                </lx-dropdown-menu>
-	            </lx-dropdown>
+	        		<a href="#/new"><span class="toolbar__label tc-white-1 ml">Agregar nuevo producto</span></a>
+	        		<a href="#/newprovider"><span class="toolbar__label tc-white-1 ml">Agregar nuevo proveedor</span></a>
+	        		<a href="#/sales"><span class="toolbar__label tc-white-1 ml">Ver ventas</span></a>
 	        </div>
 	    </div>
 	</div>

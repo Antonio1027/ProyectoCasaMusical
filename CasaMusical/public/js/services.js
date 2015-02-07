@@ -42,6 +42,21 @@
 
 			return deferred.promise;
 		}
+
+		function newprovider(provider){
+			var deferred = $q.defer();
+
+			$http.post('newProvider', provider)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(error){
+					deferred.reject(error);
+				});
+
+			return deferred.promise;
+		}
+
 		function newsale(product){
 			var deferred = $q.defer();
 
@@ -100,6 +115,7 @@
 			all: all,
 			salesall: salesall,
 			newarticle: newarticle,
+			newprovider: newprovider,
 			newsale: newsale,
 			updatearticle: updatearticle,
 			searcharticle: searcharticle,

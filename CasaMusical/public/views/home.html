@@ -71,14 +71,19 @@
         <tbody>
             <tr ng-class="{'bgc-deep-orange-50': product.status == 'pr'}" class="data-table__clickable-row" ng-repeat="product in products | filter: searchArticle">
             	
-                <td>
-                    <i class="icon icon--l icon--blue-grey icon--circled mdi mdi--label"></i>
+                <td style="width: 192px;">
+                    <a  href="#/edit/{{product.id}}" class="icon icon--l icon--blue-grey icon--circled mdi mdi--create" lx-tooltip="Editar producto" tooltip-position="top"></a>
+                    <a ng-click="opendDialog('test', product.id)" class="icon icon--l icon--blue-grey icon--circled mdi mdi--local-atm" lx-tooltip="Realizar una venta" tooltip-position="top"></a>
+                    <a ng-click="removeArticle(product.id)" class="icon icon--l icon--blue-grey icon--circled mdi mdi--cancel" lx-tooltip="Eliminar el producto" tooltip-position="top"></a>
                 </td>
                 <td>
                     <span>{{product.product}}</span>
                 </td>
                 <td>
                     <span><i>{{product.model}}</i></span>
+                </td>
+                <td>
+                    <span><i>{{product.key}}</i></span>
                 </td>
                 <td>
                     <span>{{product.price | currency}}</span>
@@ -91,24 +96,6 @@
                 </td>
                 <td>
                     <span>{{product.reserve}}</span>
-                </td>
-                <td>
-                    <lx-dropdown position="right" from-top>
-                        <button class="btn btn--l btn--black btn--icon" lx-ripple lx-dropdown-toggle>
-                            <i class="mdi mdi--more-vert"></i>
-                        </button>
-
-                        <lx-dropdown-menu>
-                            <ul>
-                                <li><a href="#/edit/{{product.id}}" class="dropdown-link">Editar</a></li>
-                                <li><a class="dropdown-link" ng-click="opendDialog('test', product.id)">Realizar una venta</a></li>
-                                <li class="dropdown-divider"></li>
-                                <li>
-                                    <a class="dropdown-link" ng-click="removeArticle(product.id)">Eliminar</a>
-                                </li>                                
-                            </ul>
-                        </lx-dropdown-menu>
-                    </lx-dropdown>
                 </td>
             </tr>
         </tbody>

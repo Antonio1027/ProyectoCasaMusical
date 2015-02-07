@@ -1,0 +1,47 @@
+<div class="form-article">
+    <div class="grid mt">
+        <div class="grid__col4">
+            <lx-text-field label="Nombre del proveedor" fixed-label="true" icon="keyboard-arrow-right" error="!form.name.$valid">
+                <input type="text" ng-model="provider.name" name="name" required>
+            </lx-text-field>
+            <ul class="form-error form-error-margin" ng-if="error.name">
+                <li>{{error.name[0]}}</li>
+            </ul>
+
+            <lx-text-field label="Dirección del proveedor" fixed-label="true" icon="keyboard-arrow-right" error="!form.home.$valid">
+                <input type="text" ng-model="provider.home" name="home" required>
+            </lx-text-field>
+            <ul class="form-error form-error-margin" ng-if="error.home">
+                <li>{{error.home[0]}}</li>
+            </ul>
+        </div>
+
+        <div class="grid__col4">
+            <lx-text-field label="Telefono" fixed-label="true" icon="keyboard-arrow-right" error="!form.phone.$valid">
+                <input type="text" ng-model="provider.phone" name="phone" required>
+            </lx-text-field>
+            <ul class="form-error form-error-margin" ng-if="error.phone">
+                <li>{{error.phone[0]}}</li>
+            </ul>
+
+            <lx-text-field label="Descripción" fixed-label="true" icon="keyboard-arrow-right" error="!form.description.$valid">
+                <input type="text" ng-model="provider.description" name="description" required>
+            </lx-text-field>
+            <ul class="form-error form-error-margin" ng-if="error.description">
+                <li>{{error.description[0]}}</li>
+            </ul>
+        </div>
+
+        <div class="grid__col4">
+            <lx-text-field label="Tiempo de entrega" fixed-label="true" icon="keyboard-arrow-right" error="!form.delivery_time.$valid">
+                <input type="text" ng-model="provider.delivery_time" name="delivery_time" required>
+            </lx-text-field>
+            <ul class="form-error form-error-margin" ng-if="error.delivery_time">
+                <li>{{error.delivery_time[0]}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn--xl btn--blue btn--fab" lx-ripple><i class="mdi mdi--add"></i></button>
+    </div>
+</div>

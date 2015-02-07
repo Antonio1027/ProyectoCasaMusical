@@ -18,6 +18,10 @@
 				templateUrl: 'views/newarticle.html',
 				controller: 'NewArticleCtrl'
 			})
+			.when('/newprovider', {
+				templateUrl: 'views/newprovider.html',
+				controller: 'NewProviderCtrl'
+			})
 			.when('/edit/:id', {
 				templateUrl: 'views/editarticle.html',
 				controller: 'EditArticleCtrl'
