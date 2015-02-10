@@ -66,7 +66,7 @@
     </div>
     <div class="grid mt">
         <div class="grid__col12">
-            <lx-select ng-model="product.provider" placeholder="Lorem Ipsum" choices="people" floating-label>
+            <lx-select ng-model="product.provider_id" placeholder="Lorem Ipsum" choices="people" floating-label>
                 <lx-select-selected>
                     {{ $selected.name }} - {{ $selected.age }}
                 </lx-select-selected>
@@ -76,7 +76,7 @@
                 </lx-select-choices>
             </lx-select>
 
-            {{product.provider}}
+            {{product.provider_id}}
         </div>
     </div>
     <div class="text-center">
