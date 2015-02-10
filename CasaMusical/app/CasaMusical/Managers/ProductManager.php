@@ -12,7 +12,9 @@ class ProductManager extends BaseManager
 					'gain'	  		=> 'required | numeric',
 					'price_iva'		=> 'required | numeric',
 					'reserve'		=> 'required | numeric',
-					'reorderpoint'	=> 'required | numeric'		
+					'reorderpoint'	=> 'required | numeric',
+					'key'			=> 'required',
+					'provider_id'	=> 'required'	
 				);
 		return $rules;
 	}

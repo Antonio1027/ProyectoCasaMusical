@@ -8,5 +8,7 @@ class Product extends \Eloquent {
 							'gain',
 							'price_iva',
 							'reorderpoint',
-							'reserve');
+							'reserve',
+							'key',
+							'provider_id');
 }
