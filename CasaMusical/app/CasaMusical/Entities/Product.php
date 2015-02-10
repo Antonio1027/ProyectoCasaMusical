@@ -11,4 +11,7 @@ class Product extends \Eloquent {
 							'reserve',
 							'key',
 							'provider_id');
+	public function getsales(){
+		return $this->hasMany('CasaMusical\Entities\Sale','product_id');
+	}
 }

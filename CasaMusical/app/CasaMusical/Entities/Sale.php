@@ -10,5 +10,5 @@ class Sale extends \Eloquent {
 							'price',
 							'total',
 							'product_id'
-						];
+						];		
 }

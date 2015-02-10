@@ -36,8 +36,10 @@ class ProvidersController extends BaseController
 	}
 
 	public function updateProvider(){
-		$data = Input::all();
-		// dd($data);
+		$data = Input::all();		
+		$provider = $this->providersRepo->findProvider($data['id']);
+		dd($provider->getproducts()->());
+
 	}
 	public function deleteProvider($id){			
 		$provider = $this->providersRepo->deleteProvider($id);
