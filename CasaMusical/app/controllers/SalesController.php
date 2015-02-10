@@ -39,6 +39,7 @@ class SalesController extends BaseController
 		}
 		else return Response::json(array('msg','Producto no encontrado'),404);
 	}
+	
 }
 
  ?>

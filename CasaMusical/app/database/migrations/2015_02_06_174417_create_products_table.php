@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration {
 			$table->enum('status',['r','pr']);			
 
 			$table->integer('provider_id')->unsigned();
-			$table->foreign('provider_id')->references('id')->on('providers');
+			$table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
 
 			$table->timestamps();			
 		});

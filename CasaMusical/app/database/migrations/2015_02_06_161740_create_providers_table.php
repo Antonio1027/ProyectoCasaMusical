@@ -20,6 +20,7 @@ class CreateProvidersTable extends Migration {
 			$table->string('phone');
 			$table->integer('delivery_time')->unsigned();			
 			$table->text('description');
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}

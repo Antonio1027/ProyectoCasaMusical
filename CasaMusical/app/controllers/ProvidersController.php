@@ -1,6 +1,7 @@
 <?php 
 
 use CasaMusical\Repositories\ProvidersRepo;
+use CasaMusical\Managers\ProviderManager;
 
 class ProvidersController extends BaseController
 {
@@ -11,10 +12,17 @@ class ProvidersController extends BaseController
 		$this->providersRepo = $providersRepo;
 	}
 
-	public function newProvider(){		
+	public function providers(){
+		$providers = $this->providersRepo->allProviders();
+		if($providers)
+			return Response::json($providers,200);
+		return Response::json(array('msg'=>'No se encontraron registros'),404);
+	}
+
+	public function newProvider(){			
 		$data = Input::all();
 		$provider = $this->providersRepo->newProvider();
-		$manager = new ProviderManager($provider,$data);
+		$manager = new ProviderManager($provider,$data);		
 		if($manager->save())
 			return Response::json(array('msg'=>'Proveedor registrado'),201);		
 		return Response::json(array('msg'=>$manager->getErrors()),422);
@@ -28,10 +36,15 @@ class ProvidersController extends BaseController
 	}
 
 	public function updateProvider(){
-
+		$data = Input::all();
+		// dd($data);
 	}
-	public function deleteProvider(){
-		
+	public function deleteProvider($id){			
+		$provider = $this->providersRepo->deleteProvider($id);
+		if($provider)
+			return Response::json(array('msg'=>'Proveedor eliminado'),200);
+		else
+			return Response::json(array('msg'=>'Proveedor no eliminado'),400);
 	}
 
 }
