@@ -85,7 +85,6 @@
 
 		casamusicalService.getProviders()
 		.then(function(data){
-			console.log(data);
 			$scope.providers = data;
 		},
 		function(error){

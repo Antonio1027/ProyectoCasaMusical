@@ -66,17 +66,18 @@
     </div>
     <div class="grid mt">
         <div class="grid__col12">
-            <lx-select ng-model="product.provider_id" placeholder="Selecciona un proveedor" choices="providers" floating-label>
+            <lx-select ng-model="product.provider_id" placeholder="Selecciona un proveedor" choices="providers" floating-label required>
                 <lx-select-selected>
-                    {{ $selected.name }} - {{ $selected.age }}
+                    {{ $selected.name }}
                 </lx-select-selected>
 
                 <lx-select-choices>
                     {{ $choice.name }}
                 </lx-select-choices>
             </lx-select>
-
-            {{product.provider_id}}
+            <ul class="form-error form-error-margin" ng-if="error.provider_id">
+                <li>{{error.provider_id[0]}}</li>
+            </ul>
         </div>
     </div>
     <div class="text-center">
