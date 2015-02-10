@@ -40,6 +40,7 @@ respuesta
     {
         mgs: "Error"
     }
+
 ## Obtener un producto
 solicitud [GET] /editProduct/:id
 
@@ -172,6 +173,7 @@ Respuesta
 ---
 ## Crear un nuevo proveedor
 Solicitud [POST] /newProvider
+
     {
         name: "Cristian",
         home: "Mi casa",
@@ -190,10 +192,11 @@ Respuesta
         errors: {}
     }
     
-## Optener un proveedor
+## Obtener un proveedor
 Solicitud [GET] /editProvider/:id
 
 Respuesta
+
     Success
     {
         id: 12
@@ -212,6 +215,7 @@ Respuesta
 Solicitud [GET] /providers
 
 Respuesta
+
     Success
     [
         {
@@ -249,6 +253,7 @@ Solicitud [PUT] /updateProvider
     }
     
 Respuesta
+
     Success
     {
         msg: "Corecto"
