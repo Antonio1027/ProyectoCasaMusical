@@ -2,7 +2,8 @@
 	angular.module('cm.services', [])
 	.factory('casamusicalService',  ['$http', '$q', function ($http, $q) {
 
-		function all(){
+		// Products
+		function getArticles(){
 			var deferred = $q.defer();
 
 			$http.get('products')
@@ -15,21 +16,8 @@
 
 			return deferred.promise;
 		}
-		function salesall(){
-			var deferred = $q.defer();
 
-			$http.get('sales')
-			.success(function(data){
-				deferred.resolve(data);
-			})
-			.error(function(error){
-				deferred.reject(error);
-			});
-
-			return deferred.promise;
-		}
-
-		function newarticle(product){
+		function postArticle(product){
 			var deferred = $q.defer();
 
 			$http.post('newProduct', product)
@@ -43,35 +31,7 @@
 			return deferred.promise;
 		}
 
-		function newprovider(provider){
-			var deferred = $q.defer();
-
-			$http.post('newProvider', provider)
-				.success(function(data){
-					deferred.resolve(data);
-				})
-				.error(function(error){
-					deferred.reject(error);
-				});
-
-			return deferred.promise;
-		}
-
-		function newsale(product){
-			var deferred = $q.defer();
-
-			$http.post('newSale', product)
-				.success(function(data){
-					deferred.resolve(data);
-				})
-				.error(function(error){
-					deferred.reject(error);
-				});
-
-			return deferred.promise;
-		}
-
-		function updatearticle(product){
+		function putArticle(product){
 			var deferred = $q.defer();
 
 			$http.put('updateProduct', product)
@@ -85,7 +45,7 @@
 			return deferred.promise;
 		}
 
-		function searcharticle(id){
+		function getArticle(id){
 			var deferred = $q.defer();
 			$http.get('editProduct/'+id)
 				.success(function(data){
@@ -97,7 +57,7 @@
 			return deferred.promise;
 		}
 		
-		function removeArticle(id){
+		function deleteArticle(id){
 			var deferred = $q.defer();
 
 			$http.delete('deleteProduct/'+id)
@@ -110,16 +70,120 @@
 
 			return deferred.promise;
 		}
+
+		/* Sales */
+		function getSales(){
+			var deferred = $q.defer();
+
+			$http.get('sales')
+			.success(function(data){
+				deferred.resolve(data);
+			})
+			.error(function(error){
+				deferred.reject(error);
+			});
+
+			return deferred.promise;
+		}
+
+		function postSale(product){
+			var deferred = $q.defer();
+
+			$http.post('newSale', product)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(error){
+					deferred.reject(error);
+				});
+
+			return deferred.promise;
+		}
 		
+		//Providers
+		function postProvider(provider){
+			var deferred = $q.defer();
+
+			$http.post('newProvider', provider)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(error){
+					deferred.reject(error);
+				});
+
+			return deferred.promise;
+		}
+
+		function getProvider(id){
+			var deferred = $q.defer();
+
+			$http.get('editProvider/'+id)
+			.success(function(data){
+				deferred.resolve(data);
+			})
+			.error(function(error){
+				deferred.reject(error);
+			});
+
+			return deferred.promise;
+		}
+
+		function getProviders(){
+			var deferred = $q.defer();
+
+			$http.get('providers')
+			.success(function(data){
+				deferred.resolve(data);
+			})
+			.error(function(error){
+				deferred.reject(error);
+			});
+
+			return deferred.promise;
+		}
+
+		function putProvider(provider){
+			var deferred = $q.defer();
+
+			$http.post('updateProvider', provider)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(error){
+					deferred.reject(error);
+				});
+
+			return deferred.promise;
+		}
+
+		function deleteProvider(id){
+			var deferred = $q.defer();
+
+			$http.delete('deleteProvider/'+id)
+				.success(function(data, status){
+					deferred.resolve(data);
+				})
+				.error(function(error, status){
+					deferred.reject(error);
+				});
+
+			return deferred.promise;
+		}
+
 		return {
-			all: all,
-			salesall: salesall,
-			newarticle: newarticle,
-			newprovider: newprovider,
-			newsale: newsale,
-			updatearticle: updatearticle,
-			searcharticle: searcharticle,
-			removeArticle: removeArticle
+			getArticles: getArticles,
+			postArticle: postArticle,
+			putArticle: putArticle,
+			getArticle: getArticle,
+			deleteArticle: deleteArticle,
+			getSales: getSales,
+			postSale: postSale,
+			postProvider: postProvider,
+			getProvider: getProvider,
+			getProviders: getProviders,
+			putProvider: putProvider,
+			deleteProvider: deleteProvider
 		};
 	}])
 

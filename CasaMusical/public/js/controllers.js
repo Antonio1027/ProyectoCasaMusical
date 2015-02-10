@@ -20,7 +20,7 @@
 		$scope.removeArticle = function(id){
 	        LxNotificationService.confirm('¿Desea eliminar el articulo?', 'Seleccione aceptar si esta seguro de eliminar el articulo.', { cancel:'Aceptar', ok:'Rechazar' }, function(answer){
 	            if(!answer){
-	            	casamusicalService.removeArticle(id)
+	            	casamusicalService.deleteArticle(id)
 	            		.then(function(data){
 	            			LxNotificationService.success(data.msg);
 	            			$scope.products = $scope.products.filter(function(element){
@@ -38,7 +38,7 @@
 		    $scope.productSale.date = Date.now();
 
 		    if( angular.isNumber($scope.productSale.quantity) && $scope.productSale.quantity % 1 == 0 && $scope.productSale.quantity > 0){
-				casamusicalService.newsale($scope.productSale)
+				casamusicalService.postSale($scope.productSale)
 					.then(function(data){
 						$scope.products = $scope.products.filter(function(element){
 							if(element.id == $scope.productSale.id){
@@ -68,7 +68,7 @@
 			$scope.productSale.quantity = 0;
 		};
 
-		casamusicalService.all()
+		casamusicalService.getArticles()
 			.then(function (data){
 				$scope.products = data;				
 				respProducts = data;
@@ -81,9 +81,19 @@
 		$scope.product = {};
 		$scope.error = [];
 		$scope.regex_number = /^[0-9]*(\.[0-9]+)?$/;
+		$scope.providers = [];
+
+		casamusicalService.getProviders()
+		.then(function(data){
+			console.log(data);
+			$scope.providers = data;
+		},
+		function(error){
+			LxNotificationService.warning(error.error);
+		});
 
 		$scope.newarticle = function(){
-			casamusicalService.newarticle($scope.product)
+			casamusicalService.postArticle($scope.product)
 				.then(function(data){
 						$scope.product = {};
 						$scope.error = [];
@@ -93,17 +103,6 @@
 						$scope.error = error.errors;
 					});
 		}
-
-		$scope.people = [
-		    { name: 'Adam',      email: 'adam@email.com',      age: 10 },
-		    { name: 'Amalie',    email: 'amalie@email.com',    age: 12 },
-		    { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30 },
-		    { name: 'Samantha',  email: 'samantha@email.com',  age: 31 },
-		    { name: 'Estefanía', email: 'estefanía@email.com', age: 16 },
-		    { name: 'Natasha',   email: 'natasha@email.com',   age: 54 },
-		    { name: 'Nicole',    email: 'nicole@email.com',    age: 43 },
-		    { name: 'Adrian',    email: 'adrian@email.com',    age: 21 }
-		];
 	}])
 	.controller('NewProviderCtrl', ['$scope', '$http', 'LxNotificationService', 'casamusicalService', function ($scope, $http, LxNotificationService, casamusicalService) {
 		$scope.provider = {};
@@ -111,7 +110,7 @@
 		$scope.regex_number = /^[0-9]*(\.[0-9]+)?$/;
 
 		$scope.newprovider = function(){
-			casamusicalService.newprovider($scope.provider)
+			casamusicalService.postProvider($scope.provider)
 				.then(function(data){
 						$scope.provider = {};
 						$scope.error = [];
@@ -147,7 +146,7 @@
 				LxNotificationService.warning('Debe seleccionar por lo menos la fecha de inicio');
 		};
 
-		casamusicalService.salesall()
+		casamusicalService.getSales()
 			.then(function (data){
 				$scope.products = data;
 				$scope.productsresp = data;
@@ -162,7 +161,7 @@
 		$scope.regex_number = /^[0-9]*(\.[0-9]+)?$/;
 		var id = $routeParams.id;
 
-		casamusicalService.searcharticle(id)
+		casamusicalService.getArticle(id)
 			.then(function (data){
 				$scope.product = data;
 			},function(error){
@@ -170,7 +169,7 @@
 			});
 
 		$scope.updatearticle = function(){
-			casamusicalService.updatearticle($scope.product)
+			casamusicalService.putArticle($scope.product)
 				.then(function(data){
 						$scope.error = [];
 						LxNotificationService.success(data.msg);
