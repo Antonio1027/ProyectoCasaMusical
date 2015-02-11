@@ -10,5 +10,8 @@ class Sale extends \Eloquent {
 							'price',
 							'total',
 							'product_id'
-						];		
+						];	
+	public function getproduct(){
+		return $this->belongsTo('CasaMusical\Entities\Product','product_id');
+	}						
 }

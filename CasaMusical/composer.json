@@ -9,7 +9,8 @@
     "fzaninotto/faker": "v1.3.0"
 	},
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"thujohn/pdf":"dev-master"
 	},
 	"autoload": {
 		"psr-4":{

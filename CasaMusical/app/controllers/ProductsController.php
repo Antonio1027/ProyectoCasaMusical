@@ -27,6 +27,7 @@ class ProductsController extends BaseController
 
 		$product = $this->productRepo->findProduct($id);
 		if($product){
+			Session::put('product_id',$product->id);
 			return Response::json($product,200);//peticion exitosa
 		}	
 		return Response::json(array('msg'=>'Articulo no encontrado'),404);//recurso no encontrado
@@ -40,13 +41,16 @@ class ProductsController extends BaseController
 		return Response::json(array('msg'=>'No pudo eliminarse el producto'),404);//no hay connido para responder
 	}
 
-	public function updateProduct(){		
+	public function updateProduct(){				
 		$data = Input::all();
-		$product = $this->productRepo->findProduct($data['id']);		
+		if(isset($data['provider_id']['id']))
+			$data['provider_id'] = $data['provider_id']['id'];		
+		$product = $this->productRepo->findProduct(Session::get('product_id'));				
 		$manager = new ProductManager($product,$data);
 		if($manager->save())
 			return Response::json(array('msg'=>'Producto actualizado'),200);//peticion exitosa
-		return Response::json(array('errors'=>$manager->getErrors()),422);//error de validacion
+		else
+			return Response::json(array('errors'=>$manager->getErrors()),422);//error de validacion
 	}	
 }
  ?>

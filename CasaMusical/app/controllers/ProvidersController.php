@@ -25,21 +25,27 @@ class ProvidersController extends BaseController
 		$manager = new ProviderManager($provider,$data);		
 		if($manager->save())
 			return Response::json(array('msg'=>'Proveedor registrado'),201);		
-		return Response::json(array('msg'=>$manager->getErrors()),422);
+		return Response::json(array('errors'=>$manager->getErrors()),422);
 	}
 
 	public function editProvider($id){
 		$provider = $this->providersRepo->findProvider($id);
-		if($provider)
+		if($provider){
+			Session::put('provider_id',$provider->id);
 			return Response::json($provider,200);
+		}	
 		return Response::json(array('msg'=>'No se encontro proveedor'),404);
 	}
 
 	public function updateProvider(){
-		$data = Input::all();		
-		// $provider = $this->providersRepo->findProvider($data['id']);
-		// dd($provider->getproducts()->());
-
+		$data = Input::all();				
+		$provider = $this->providersRepo->findProvider(Session::get('provider_id'));
+		$manager = new ProviderManager($provider,$data);
+		if($manager->save()){
+			Session::forget('provider_id');
+			return Response::json(array('msg'=>'Datos actualizados'),200);
+		}
+		return Response::json(array('errors'=>$manager->getErrors()),422);
 	}
 	public function deleteProvider($id){			
 		$provider = $this->providersRepo->deleteProvider($id);

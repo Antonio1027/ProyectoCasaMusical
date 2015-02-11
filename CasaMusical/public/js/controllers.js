@@ -35,14 +35,19 @@
 		};
 
 		$scope.sales = function(){
-		    $scope.productSale.date = Date.now();
+		    if( angular.isNumber($scope.productSale.quantity) 
+		    	&& $scope.productSale.quantity % 1 == 0 
+		    	&& $scope.productSale.quantity > 0
+		    	&& $scope.productSale.date != null ){
 
-		    if( angular.isNumber($scope.productSale.quantity) && $scope.productSale.quantity % 1 == 0 && $scope.productSale.quantity > 0){
-				casamusicalService.postSale($scope.productSale)
+		    	$scope.productSale.date = Date.parse($scope.productSale.date);
+		    	casamusicalService.postSale($scope.productSale)
 					.then(function(data){
 						$scope.products = $scope.products.filter(function(element){
 							if(element.id == $scope.productSale.id){
 								element.reserve = element.reserve - $scope.productSale.quantity;
+								if (element.reserve <= element.reorderpoint)
+									element.status = "pr";
 							}
 							return element;
 						});						
@@ -54,13 +59,12 @@
 					});
 			}
 			else
-				LxNotificationService.warning('La cantidad de articulos debe ser un entero');
-
-
+				LxNotificationService.warning('La cantidad de articulos debe ser un entero y debe contener una fecha de venta');
 		};
 
 		$scope.opendDialog = function(dialogId, id){
 			$scope.productSale.id = id;
+			$scope.productSale.date = new Date( Date.now() );
 		    LxDialogService.open(dialogId);
 		};
 
@@ -159,15 +163,32 @@
 		$scope.error = [];
 		$scope.regex_number = /^[0-9]*(\.[0-9]+)?$/;
 		var id = $routeParams.id;
+		$scope.providers = [];
+		$scope.selectProvider = {};
+
+		$scope.change = function(){
+			console.log($scope.product);
+		}
 
 		casamusicalService.getArticle(id)
 			.then(function (data){
 				$scope.product = data;
+				casamusicalService.getProviders()
+					.then(function(data){
+						$scope.providers = data;
+						$scope.selectProvider = $scope.providers.filter(function (element) {
+							return element.id == $scope.product.provider_id;
+						});
+						$scope.product.provider_id = $scope.selectProvider[0];
+					},
+					function(error){
+						LxNotificationService.warning(error.error);
+					});
 			},function(error){
 				LxNotificationService.error(error.msg);
 			});
 
-		$scope.updatearticle = function(){
+		$scope.updatearticle = function(){			
 			casamusicalService.putArticle($scope.product)
 				.then(function(data){
 						$scope.error = [];

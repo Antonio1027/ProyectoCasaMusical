@@ -14,4 +14,7 @@ class Product extends \Eloquent {
 	public function getsales(){
 		return $this->hasMany('CasaMusical\Entities\Sale','product_id');
 	}
+	public function getprovider(){
+		return $this->belongsTo('CasaMusical\Entities\Provider','provider_id');	
+	}
 }

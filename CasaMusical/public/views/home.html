@@ -27,6 +27,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="p++">
+                    <div flex-container="row" flex-gutter="24">
+                        <div flex-item>
+                            <lx-text-field label="Fecha de la venta">
+                                <input type="date" ng-model="productSale.date" ng-value="{{productSale.date | date: 'yyyy-MM-dd'}}">
+                            </lx-text-field>
+                        </div>
+                    </div>
+                </div>
             </lx-tab>
         </lx-tabs>
     </div>
@@ -43,7 +52,7 @@
             <div class="card bgc-blue-grey-700">
                 <div class="toolbar">
                     <div class="toolbar__right">
-                        <lx-search-filter model="searchArticle" position="right" filter-width="400px" theme="dark" closed></lx-search-filter>
+                        <lx-search-filter model="searchArticle.key" position="right" filter-width="400px" theme="dark" closed></lx-search-filter>
     
                         <div class="btn btn--l switch colorwhite">
                             <input type="checkbox" id="switch1" class="switch__input"ng-model="prcb" ng-change="togglePR()">
@@ -61,6 +70,7 @@
                 <th></th>
                 <th><strong>Nombre</strong></th>
                 <th>Modelo</th>
+                <th>Clave</th>
                 <th>Cantidad sin iva</th>
                 <th>Ganancia</th>
                 <th>Precio al publico</th>
