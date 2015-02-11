@@ -158,6 +158,37 @@
 				LxNotificationService.error(error.msg);
 			});
 	}])
+	.controller('ProvidersCtrl', ['$scope', 'LxNotificationService', 'casamusicalService', function ($scope, LxNotificationService, casamusicalService) {
+
+		$scope.providers = [];
+		
+		casamusicalService.getProviders()
+			.then(function (data){
+				$scope.providers = data;
+				// $scope.productsresp = data;
+			},
+			function(error){
+				LxNotificationService.error(error.msg);
+			});
+
+		$scope.removeProvider = function(id){
+			LxNotificationService.confirm('¿Desea eliminar el proveedor?', 'Seleccione aceptar si esta seguro de eliminar el proveedor.', { cancel:'Aceptar', ok:'Rechazar' }, function(answer){
+			    if(!answer){
+			    	casamusicalService.deleteProvider(id)
+			    		.then(function(data){
+			    			LxNotificationService.success(data.msg);
+			    			$scope.providers = $scope.providers.filter(function(element){
+			    				return element.id != id;
+			    			});
+			    		},
+			    		function(data){
+			    			LxNotificationService.error(data.msg);
+			    		});
+			    }
+			});
+		};
+
+	}])
 	.controller('EditArticleCtrl', ['$scope', '$http', '$routeParams', 'LxNotificationService', 'casamusicalService', function ($scope, $http, $routeParams, LxNotificationService, casamusicalService) {
 		$scope.product = {};
 		$scope.error = [];
@@ -165,10 +196,6 @@
 		var id = $routeParams.id;
 		$scope.providers = [];
 		$scope.selectProvider = {};
-
-		$scope.change = function(){
-			console.log($scope.product);
-		}
 
 		casamusicalService.getArticle(id)
 			.then(function (data){
@@ -198,5 +225,30 @@
 						$scope.error = error.errors;
 					});
 		}
+	}])
+	.controller('EditProviderCtrl', ['$scope', '$http', '$routeParams', 'LxNotificationService', 'casamusicalService', function ($scope, $http, $routeParams, LxNotificationService, casamusicalService) {
+		$scope.provider = {};
+		$scope.error = [];
+		var id = $routeParams.id;
+
+		casamusicalService.getProvider(id)
+			.then(function (data){
+				$scope.provider = data;				
+			},function(error){
+				LxNotificationService.error(error.msg);
+			});
+
+		$scope.updateprovider = function(){
+			console.log('updateprovider');
+			casamusicalService.putProvider($scope.provider)
+				.then(function(data){
+						$scope.error = [];
+						LxNotificationService.success(data.msg);
+					},
+					function(error){
+						$scope.error = error.errors;
+					});
+		};
+
 	}]);
 })();

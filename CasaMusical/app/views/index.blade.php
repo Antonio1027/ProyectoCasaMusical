@@ -16,6 +16,7 @@
 	        <div class="toolbar__right">
 	        		<a href="#/new"><span class="toolbar__label tc-white-1 ml">Agregar nuevo producto</span></a>
 	        		<a href="#/newprovider"><span class="toolbar__label tc-white-1 ml">Agregar nuevo proveedor</span></a>
+	        		<a href="#/providers"><span class="toolbar__label tc-white-1 ml">Ver los proveedores</span></a>
 	        		<a href="#/sales"><span class="toolbar__label tc-white-1 ml">Ver ventas</span></a>
 	        </div>
 	    </div>

@@ -26,9 +26,17 @@
 				templateUrl: 'views/editarticle.html',
 				controller: 'EditArticleCtrl'
 			})
+			.when('/editprovider/:id', {
+				templateUrl: 'views/editprovider.html',
+				controller: 'EditProviderCtrl'
+			})
 			.when('/sales', {
 				templateUrl: 'views/sales.html',
 				controller: 'SalesCtrl'
+			})
+			.when('/providers', {
+				templateUrl: 'views/providers.html',
+				controller: 'ProvidersCtrl'
 			})
 			.otherwise({
 				redirectTo: '/'

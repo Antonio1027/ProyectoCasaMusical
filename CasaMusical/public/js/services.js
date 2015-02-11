@@ -146,7 +146,7 @@
 		function putProvider(provider){
 			var deferred = $q.defer();
 
-			$http.post('updateProvider', provider)
+			$http.put('updateProvider', provider)
 				.success(function(data){
 					deferred.resolve(data);
 				})

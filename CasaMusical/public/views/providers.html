@@ -1,0 +1,53 @@
+<h1 class="main-section__title">Proveedores</h1>
+
+
+<div class="data-table-container">
+    <div class="grid mt++">
+        <div class="grid__col12">
+            <div class="card bgc-blue-grey-700">
+                <div class="toolbar">
+                    <div class="toolbar__right">
+                        <lx-search-filter model="searchProvider" position="right" filter-width="400px" theme="dark" closed></lx-search-filter>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="data-table data-table--has-primary data-table--has-secondary">
+        <thead>
+            <tr>
+                <th></th>
+                <th><strong>Nombre</strong></th>
+                <th><strong>Descripcion</strong></th>
+                <th><strong>Direccion</strong></th>
+                <th><strong>Telefono</strong></th>
+                <th><strong>Tiempo de entrega</strong></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="data-table__clickable-row" ng-repeat="provider in providers | filter: searchProvider">
+            	<td style="width: 192px;">
+                    <a  href="#/editprovider/{{provider.id}}" class="icon icon--l icon--blue-grey icon--circled mdi mdi--create" lx-tooltip="Editar proveedor" tooltip-position="top"></a>
+                    <a ng-click="removeProvider(provider.id)" class="icon icon--l icon--blue-grey icon--circled mdi mdi--cancel" lx-tooltip="Eliminar el proveedor" tooltip-position="top"></a>
+                </td>
+                <td>
+                    <span>{{provider.name}}</span>
+                </td>
+                <td>
+                    <span>{{provider.description}}</span>
+                </td>
+                <td>
+                    <span>{{provider.phone}}</span>
+                </td>
+                <td>
+                    <span>{{provider.delivery_time}}</span>
+                </td>
+                <td>
+                    <span>{{provider.home}}</span>
+                </td>                
+            </tr>
+        </tbody>
+    </table>
+</div>
