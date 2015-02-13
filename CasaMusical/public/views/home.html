@@ -47,23 +47,24 @@
 </lx-dialog>
 
 <div class="data-table-container">
-    <div class="grid mt++">
-        <div class="grid__col12">
+    <div class="mt++" flex-container="row" flex-gutter="24">
+        <div flex-item>
             <div class="card bgc-blue-grey-700">
-                <div class="toolbar">
+                <div class="toolbar wl">
+                    <div style="float: left">
+                        <lx-search-filter theme="dark" model="searchFilter.fifth" filter-width="100%" placeholder="Buscar producto"></lx-search-filter>
+                    </div>
                     <div class="toolbar__right">
-                        <lx-search-filter model="searchArticle.key" position="right" filter-width="400px" theme="dark" closed></lx-search-filter>
-    
-                        <div class="btn btn--l switch colorwhite">
+                        <div class="btn btn--l switch colorwhite fr">
                             <input type="checkbox" id="switch1" class="switch__input"ng-model="prcb" ng-change="togglePR()">
                             <label for="switch1" class="switch__label">Punto de pedido</label>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-    
     <table class="data-table data-table--has-primary data-table--has-secondary">
         <thead>
             <tr>

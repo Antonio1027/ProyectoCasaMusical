@@ -14,10 +14,11 @@
 	        <a href="#/"><span class="toolbar__label tc-white-1 fs-title ml">Casa Musical</span></a>
 
 	        <div class="toolbar__right">
-	        		<a href="#/new"><span class="toolbar__label tc-white-1 ml">Agregar nuevo producto</span></a>
-	        		<a href="#/newprovider"><span class="toolbar__label tc-white-1 ml">Agregar nuevo proveedor</span></a>
-	        		<a href="#/providers"><span class="toolbar__label tc-white-1 ml">Ver los proveedores</span></a>
+	        		<a href="#/new"><span class="toolbar__label tc-white-1 ml">Nuevo producto</span></a>
+	        		<a href="#/newprovider"><span class="toolbar__label tc-white-1 ml">Nuevo proveedor</span></a>
+	        		<a href="#/providers"><span class="toolbar__label tc-white-1 ml">Ver proveedores</span></a>
 	        		<a href="#/sales"><span class="toolbar__label tc-white-1 ml">Ver ventas</span></a>
+	        		<a href="ordersReport"><span class="toolbar__label tc-white-1 ml">Reporte de pedidos</span></a>
 	        </div>
 	    </div>
 	</div>
