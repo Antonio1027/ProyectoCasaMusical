@@ -10,7 +10,7 @@ class UtilsController extends BaseController
 		$this->utilRepo = $utilRepo;
 	}
 
-	public function products(){		
+	public function products(){				
 		$product = Input::get('product');
 		$products = $this->utilRepo->AllProducts($product);		
 		if($products)

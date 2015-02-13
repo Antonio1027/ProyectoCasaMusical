@@ -1,6 +1,14 @@
 <?php
 namespace CasaMusical\Entities;
+
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 class Product extends \Eloquent {
+
+	use SoftDeletingTrait;
+
+	protected $dates = array('deleted_at');
+
 	protected $fillable = array(
 							'product',
 							'model',
