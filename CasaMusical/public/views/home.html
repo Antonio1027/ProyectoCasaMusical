@@ -52,11 +52,11 @@
             <div class="card bgc-blue-grey-700">
                 <div class="toolbar wl">
                     <div style="float: left">
-                        <lx-search-filter theme="dark" model="searchFilter.fifth" filter-width="100%" placeholder="Buscar producto"></lx-search-filter>
+                        <lx-search-filter theme="dark" model="searchArticle.key" filter-width="100%" placeholder="Buscar producto"></lx-search-filter>
                     </div>
                     <div class="toolbar__right">
                         <div class="btn btn--l switch colorwhite fr">
-                            <input type="checkbox" id="switch1" class="switch__input"ng-model="prcb" ng-change="togglePR()">
+                            <input type="checkbox" id="switch1" class="switch__input" ng-model="prcb" ng-change="togglePR()">
                             <label for="switch1" class="switch__label">Punto de pedido</label>
                         </div>
                     </div>
@@ -84,8 +84,8 @@
             	
                 <td style="width: 192px;">
                     <a  href="#/edit/{{product.id}}" class="icon icon--l icon--blue-grey icon--circled mdi mdi--create" lx-tooltip="Editar producto" tooltip-position="top"></a>
-                    <a ng-click="opendDialog('test', product.id)" class="icon icon--l icon--blue-grey icon--circled mdi mdi--local-atm" lx-tooltip="Realizar una venta" tooltip-position="top"></a>
-                    <a ng-click="removeArticle(product.id)" class="icon icon--l icon--blue-grey icon--circled mdi mdi--cancel" lx-tooltip="Eliminar el producto" tooltip-position="top"></a>
+                    <a ng-click="opendDialog('test', product.id)" class="icon icon--l icon--blue-grey icon--circled mdi mdi--local-atm" lx-tooltip="Realizar una venta" tooltip-position="top"></a>                    
+                    <a ng-click="removeArticle(product.id)" ng-if="product.reserve == 0" class="icon icon--l icon--blue-grey icon--circled mdi mdi--cancel" lx-tooltip="Eliminar el producto" tooltip-position="top"></a>
                 </td>
                 <td>
                     <span>{{product.product}}</span>
