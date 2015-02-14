@@ -13,7 +13,7 @@ class ProductManager extends BaseManager
 					'price_iva'		=> 'required | numeric',
 					'reserve'		=> 'required | numeric',
 					'reorderpoint'	=> 'required | numeric',
-					'key'			=> 'required',
+					'key'			=> 'required | unique:products,key,' . $this->entity->id,
 					'provider_id'	=> 'required'	
 				);
 		return $rules;
