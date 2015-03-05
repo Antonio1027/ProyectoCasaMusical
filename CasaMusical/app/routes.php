@@ -36,4 +36,5 @@ Route::delete('deleteProvider/{id}',array('as'=>'deleteProvider','uses'=>'Provid
 Route::get('reorderPointProducts',array('as'=>'reorderPointProducts','uses'=>'UtilsController@reorderPointProducts'));
 Route::get('providersList',array('as'=>'providersList','uses'=>'UtilsController@providersList'));
 Route::get('ordersReport',array('as'=>'ordersReport','uses'=>'ReportsController@ordersReport'));
+Route::get('productsCatalog',array('as'=>'productsCatalog','uses'=>'ReportsController@productsCatalog'));
 

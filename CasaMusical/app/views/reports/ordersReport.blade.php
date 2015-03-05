@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<title>Reporte de pedidos</title>
@@ -9,7 +9,7 @@
 	}
 	.table-report{
 		border-collapse: collapse;
-		padding: 5px;		
+		padding: 5px;				
 	}
 	.table-report td,th{
 		border-collapse: collapse;
@@ -26,11 +26,12 @@
 </head>
 <body>
 	<div class="container">
-		<table class="table-report">
+		<table class="table-report" width="100%">
 			<tr>
-				<th colspan = "5">Lista de pedidos</th>
+				<th colspan = "6">Lista de pedidos</th>
 			</tr>
 			<tr>
+				<th>#</th>
 				<th>Articulos</th>				
 				<th>Precio</th>
 				<th>Proveedor</th>
@@ -39,11 +40,12 @@
 			</tr>
 			@foreach($products as $key => $product)
 				<tr>
-					<td>{{$product['product']}}</td>
-					<td>{{$product['price']}}</td>
-					<td>{{$product->getprovider['name']}}</td>
-					<td>{{$product->getprovider['home']}}</td>
-					<td>{{$product->getprovider['delivery_time']}}</td>
+					<td>{{$key + 1}}</td>
+					<td>{{$product->product}}</td>
+					<td>${{number_format($product->price,2,'.',',')}}</td>
+					<td>{{$product->getprovider->name}}</td>
+					<td>{{$product->getprovider->home}}</td>
+					<td>{{$product->getprovider->delivery_time}}</td>
 				</tr>
 			@endforeach
 		</table>

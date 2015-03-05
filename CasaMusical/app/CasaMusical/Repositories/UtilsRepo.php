@@ -7,7 +7,9 @@ use CasaMusical\Entities\Provider;
 class UtilsRepo extends \Eloquent
 {
 	public function allProducts($product){		
-		return Product::where('product','LIKE','%'.$product.'%')->get();
+		return Product::where('product','LIKE','%'.$product.'%')
+						->orderBy('key','Asc')
+						->get();
 	}
 
 	public function reorderPointProducts($product){
