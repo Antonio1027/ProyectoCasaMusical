@@ -19,6 +19,7 @@
 	        		<a href="#/providers"><span class="toolbar__label tc-white-1 ml">Ver proveedores</span></a>
 	        		<a href="#/sales"><span class="toolbar__label tc-white-1 ml">Ver ventas</span></a>
 	        		<a href="ordersReport"><span class="toolbar__label tc-white-1 ml">Reporte de pedidos</span></a>
+	        		<a href="productsCatalog"><span class="toolbar__label tc-white-1 ml">Articulos en existencia</span></a>
 	        </div>
 	    </div>
 	</div>

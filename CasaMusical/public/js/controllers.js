@@ -129,6 +129,7 @@
 		$scope.products = [];
 		$scope.productsresp = [];
 		$scope.date = [];
+		$scope.totalsales = 0;
 
 
 		$scope.datechange = function(){
@@ -144,15 +145,24 @@
 					if( element.date >= date.start && element.date < date.end )
 						return element;
 				});
+				counttotal($scope.products);
 			}
 			else
 				LxNotificationService.warning('Debe seleccionar por lo menos la fecha de inicio');
 		};
 
+		function counttotal(data){
+			$scope.totalsales = 0;
+			data.forEach(function(element){
+				$scope.totalsales += parseInt(element.total);
+			});
+		}
+
 		casamusicalService.getSales()
 			.then(function (data){
 				$scope.products = data;
 				$scope.productsresp = data;
+				counttotal(data);
 			},
 			function(error){
 				LxNotificationService.error(error.msg);
@@ -239,7 +249,6 @@
 			});
 
 		$scope.updateprovider = function(){
-			console.log('updateprovider');
 			casamusicalService.putProvider($scope.provider)
 				.then(function(data){
 						$scope.error = [];
