@@ -12,8 +12,9 @@ class ProvidersController extends BaseController
 		$this->providersRepo = $providersRepo;
 	}
 
-	public function providers(){
-		$providers = $this->providersRepo->allProviders();
+	public function providers(){		
+		$providers = $this->providersRepo->allProviders();		
+		// dd($providers);
 		if($providers)
 			return Response::json($providers,200);
 		return Response::json(array('msg'=>'No se encontraron registros'),404);

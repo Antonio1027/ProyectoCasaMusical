@@ -16,10 +16,10 @@ class CreateProvidersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->string('home');
-			$table->string('phone');
+			$table->string('home')->nullable();
+			$table->string('phone')->nullable();
 			$table->integer('delivery_time')->unsigned();			
-			$table->text('description');
+			$table->text('description')->nullable();
 			$table->softDeletes();
 			$table->timestamps();
 		});

@@ -8,7 +8,7 @@ class UtilsRepo extends \Eloquent
 {
 	public function allProducts($product){		
 		return Product::where('product','LIKE','%'.$product.'%')
-						->orderBy('key','Asc')
+						->orderBy('id','Asc')
 						->get();
 	}
 
