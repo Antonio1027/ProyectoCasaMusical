@@ -171,6 +171,20 @@
 			return deferred.promise;
 		}
 
+		function restoreSale(id){
+			var deferred = $q.defer();
+
+			$http.delete('restoreSale/'+id)
+				.success(function(data, status){
+					deferred.resolve(data);
+				})
+				.error(function(error, status){
+					deferred.reject(error);
+				});
+
+			return deferred.promise;
+		}
+
 		return {
 			getArticles: getArticles,
 			postArticle: postArticle,
@@ -183,7 +197,8 @@
 			getProvider: getProvider,
 			getProviders: getProviders,
 			putProvider: putProvider,
-			deleteProvider: deleteProvider
+			deleteProvider: deleteProvider,
+			restoreSale: restoreSale
 		};
 	}])
 

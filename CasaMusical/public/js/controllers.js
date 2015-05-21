@@ -130,7 +130,22 @@
 		$scope.productsresp = [];
 		$scope.date = [];
 		$scope.totalsales = 0;
+		initProduct();
 
+		$scope.replaySale = function(id){
+			LxNotificationService.confirm('¿Desea deshacer la venta?', '', { cancel:'No', ok:'Si' }, function(answer){
+				if(answer){
+					casamusicalService.restoreSale(id)
+					.then(function (data){
+						initProduct();
+						LxNotificationService.success(data.msg);
+					},
+					function(error){
+						LxNotificationService.error(error.msg);
+					});
+				}
+			});
+		}
 
 		$scope.datechange = function(){
 			var date = [];
@@ -158,15 +173,17 @@
 			});
 		}
 
-		casamusicalService.getSales()
-			.then(function (data){
-				$scope.products = data;
-				$scope.productsresp = data;
-				counttotal(data);
-			},
-			function(error){
-				LxNotificationService.error(error.msg);
-			});
+		function initProduct(){
+			casamusicalService.getSales()
+				.then(function (data){
+					$scope.products = data;
+					$scope.productsresp = data;
+					counttotal(data);
+				},
+				function(error){
+					LxNotificationService.error(error.msg);
+				});
+		}
 	}])
 	.controller('ProvidersCtrl', ['$scope', 'LxNotificationService', 'casamusicalService', function ($scope, LxNotificationService, casamusicalService) {
 
