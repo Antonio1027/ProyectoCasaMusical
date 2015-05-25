@@ -45,7 +45,14 @@ class ProductsController extends BaseController
 		$data = Input::all();
 		if(isset($data['provider_id']['id']))
 			$data['provider_id'] = $data['provider_id']['id'];		
+
 		$product = $this->productRepo->findProduct(Session::get('product_id'));				
+		
+		if((int)$data['reserve'] > (int)$data['reorderpoint'])
+			$data['status'] = 'r';
+		else 
+			$data['status'] = 'pr';
+
 		$manager = new ProductManager($product,$data);
 		if($manager->save())
 			return Response::json(array('msg'=>'Producto actualizado'),200);//peticion exitosa
