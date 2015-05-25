@@ -38,14 +38,14 @@
 				<th>Direccion</th>
 				<th>Tiempo de entrega</th>
 			</tr>
-			@foreach($products as $key => $product)
+			@foreach($data as $key => $product)
 				<tr>
 					<td>{{$key + 1}}</td>
-					<td>{{$product->product}}</td>
-					<td>${{number_format($product->price,2,'.',',')}}</td>
-					<td>{{$product->getprovider->name}}</td>
-					<td>{{$product->getprovider->home}}</td>
-					<td>{{$product->getprovider->delivery_time}}</td>
+					<td>{{$product['product']}}</td>
+					<td>${{number_format($product['price'],2,'.',',')}}</td>
+					<td>{{$product['name']}}</td>
+					<td>{{$product['home']}}</td>
+					<td>{{$product['delivery_time']}}</td>
 				</tr>
 			@endforeach
 		</table>
