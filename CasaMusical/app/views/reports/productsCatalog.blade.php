@@ -8,6 +8,7 @@
 	<style>
 		body{
 			font-family: 'roboto', sans-serif;
+			font-size: 11px;
 		}
 		.table-report{
 			border-collapse: collapse;
@@ -31,18 +32,18 @@
 	<table class="table-report" width="100%">	
 		<tr>	
 			<th>#</th>
+			<th>Reserva</th>			
 			<th>Art&iacute;culos</th>				
 			<th>Precio</th>
-			<th>Existencia</th>			
 			<th>Proveedor</th>
 		</tr>
-		@foreach($products as $key=>$product)
+		@foreach($data as $key=>$product)
 		<tr>			
-			<td>{{$key + 1}}</td>	
-			<td>{{$product->product}}</td>
-			<td>${{number_format($product->price,2,'.',',')}}</td>
-			<td>{{$product->reserve}}</td>
-			<td>{{$product->getprovider->name}}</td>
+			<td>{{$key + 1}}</td>				
+			<td>{{$product['reserve']}}</td>
+			<td>{{$product['product']}}</td>
+			<td>${{number_format($product['price'],2,'.',',')}}</td>
+			<td>{{$product['name']}}</td>
 		</tr>
 		@endforeach
 	</table>

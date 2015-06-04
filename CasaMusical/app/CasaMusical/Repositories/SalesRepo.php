@@ -8,7 +8,7 @@ class SalesRepo extends \Eloquent
 	public function allSales(){
 		return Sale::join('products','sales.product_id','=','products.id')
 					->orderBy('sales.created_at','Desc')
-					->select('sales.*','products.price','products.product','products.model')
+					->select('sales.*','products.price_iva','products.product','products.model')
 					->get();
 	}	
 
