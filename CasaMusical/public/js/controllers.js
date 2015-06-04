@@ -38,8 +38,10 @@
 		    if( angular.isNumber($scope.productSale.quantity) 
 		    	&& $scope.productSale.quantity % 1 == 0 
 		    	&& $scope.productSale.quantity > 0
-		    	&& $scope.productSale.date != null ){
-
+		    	&& $scope.productSale.date != null 
+		    	&& $scope.statussale == 1
+		    	){
+		    	$scope.statussale = 0;
 		    	$scope.productSale.date = Date.parse($scope.productSale.date);
 		    	casamusicalService.postSale($scope.productSale)
 					.then(function(data){
@@ -63,6 +65,7 @@
 		};
 
 		$scope.opendDialog = function(dialogId, id){
+			$scope.statussale = 1;
 			$scope.productSale.id = id;
 			$scope.productSale.date = new Date( Date.now() );
 		    LxDialogService.open(dialogId);
