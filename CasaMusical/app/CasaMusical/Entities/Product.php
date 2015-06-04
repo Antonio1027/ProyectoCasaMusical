@@ -18,7 +18,8 @@ class Product extends \Eloquent {
 							'reorderpoint',
 							'reserve',
 							'key',
-							'provider_id');
+							'provider_id',
+							'status');
 	public function getsales(){
 		return $this->hasMany('CasaMusical\Entities\Sale','product_id');
 	}

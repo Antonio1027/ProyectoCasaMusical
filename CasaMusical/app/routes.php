@@ -32,6 +32,7 @@ Route::post('newProvider',array('as'=>'newProvider','uses'=>'ProvidersController
 
 Route::delete('deleteProduct/{id}',array('as'=>'deleteProduct','uses'=>'ProductsController@deleteProduct'));
 Route::delete('deleteProvider/{id}',array('as'=>'deleteProvider','uses'=>'ProvidersController@deleteProvider'));
+Route::delete('restoreSale/{id}',array('as'=>'restoreSale','uses'=>'SalesController@restoreSale'));
 
 Route::get('reorderPointProducts',array('as'=>'reorderPointProducts','uses'=>'UtilsController@reorderPointProducts'));
 Route::get('providersList',array('as'=>'providersList','uses'=>'UtilsController@providersList'));

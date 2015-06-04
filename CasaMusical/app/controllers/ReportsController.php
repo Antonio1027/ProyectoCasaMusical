@@ -11,9 +11,10 @@ class ReportsController extends BaseController
 	}
 
 	public function ordersReport(){
-		$products = $this->reportsRepo->orders();
+		$products = $this->reportsRepo->orders();		
+		$data = $products->toArray();
 		if($products->count()){
-			$html = View::make('reports/ordersReport',compact('products'));
+			$html = View::make('reports/ordersReport',compact('data'));
 			return PDF::load($html,'A4','landscape')->show();
 		}	
 		else 
@@ -24,7 +25,7 @@ class ReportsController extends BaseController
 		$products = $this->reportsRepo->productsCatalog();
 		if($products->count()){
 			$html = View::make('reports/productsCatalog',compact('products'));
-			return PDF::load($html,'A4','landscape')->show();
+			return PDF::load($html,'A4','landscape')->download();
 		}
 		else
 			return Redirect::back();

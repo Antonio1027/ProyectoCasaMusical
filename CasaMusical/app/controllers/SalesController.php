@@ -41,6 +41,30 @@ class SalesController extends BaseController
 		}
 		else return Response::json(array('msg','Producto no encontrado'),404);
 	}
+
+	public function restoreSale($id){
+		$sale = $this->salesRepo->findSale($id);		
+		if($sale){
+			$product = $this->productsRepo->findProduct($sale->product_id);					
+			if($sale->delete() && $product){
+				$product->reserve = $product->reserve + $sale->quantity;
+
+				if($product->reserve > $product->reorderpoint)
+					$product->status = 'r';
+				else
+					$product->status = 'pr';
+
+				if($product->save())
+					return Response::json(array('msg'=>'Venta eliminada'),201);				
+				else
+					return Response::json(array('msg'=>'Ocurrion en error al eliminar. Intente mas tarde'),201);
+			}
+			else
+				return Response::json(array('msg','Ocurrio un error intente más tarde'),404);
+		}
+		else
+			return Response::json(array('msg'=>'No se encontraron resultados'),422);
+	}
 	
 }
 

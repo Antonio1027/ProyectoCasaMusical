@@ -7,7 +7,9 @@ class ReportsRepo extends \Eloquent
 {
 		public function orders()
 		{
-			return Product::where('status','=','pr')
+			return Product::join('providers','providers.id','=','products.provider_id')
+							->select('products.*','providers.name','providers.delivery_time','providers.home')			
+							->where('status','=','pr')
 							->get();
 		}
 

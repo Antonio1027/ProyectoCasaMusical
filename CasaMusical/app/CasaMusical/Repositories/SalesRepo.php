@@ -20,6 +20,10 @@ class SalesRepo extends \Eloquent
 		$sale->date = $date;
 		return $sale;		
 	}
+
+	public function findSale($id){
+		return Sale::find($id);		
+	}
 }
 
  ?>
