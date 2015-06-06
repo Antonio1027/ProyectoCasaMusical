@@ -33,7 +33,9 @@
                 <th><strong>Nombre</strong></th>
                 <th><strong>Modelo</strong></th>
                 <th><strong>Cantidad</strong></th>
-                <th><strong>Precio</strong></th>
+                <th><strong>Precio Unitario</strong></th>
+                <th><strong>Subtotal</strong></th>
+                <th><strong>Descuento</strong></th>
                 <th><strong>Total</strong></th>
             </tr>
         </thead>
@@ -62,6 +64,12 @@
                 <td>
                     <span>{{product.total | currency}}</span>
                 </td>                
+                <td>
+                    <span>{{product.discount | currency}}</span>                    
+                </td>
+                <td>
+                    <span>{{product.total_discount | currency}}</span>
+                </td>
             </tr>
         </tbody>
     </table>

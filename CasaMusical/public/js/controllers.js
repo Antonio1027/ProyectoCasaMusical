@@ -35,7 +35,8 @@
 		};
 
 		$scope.sales = function(){
-		    if( angular.isNumber($scope.productSale.quantity) 
+		    if( angular.isNumber($scope.productSale.quantity)
+		    	&& angular.isNumber($scope.productSale.discount)
 		    	&& $scope.productSale.quantity % 1 == 0 
 		    	&& $scope.productSale.quantity > 0
 		    	&& $scope.productSale.date != null 
@@ -73,6 +74,7 @@
 
 		$scope.closingDialog = function(){
 			$scope.productSale.quantity = 0;
+			$scope.productSale.discount = 0;
 		};
 
 		casamusicalService.getArticles()

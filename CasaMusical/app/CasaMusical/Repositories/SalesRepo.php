@@ -12,11 +12,12 @@ class SalesRepo extends \Eloquent
 					->get();
 	}	
 
-	public function newSale($product,$quantity,$date){
+	public function newSale($product,$quantity,$date,$discount){
 		$sale = new Sale();	
 		$sale->product_id = $product->id;		
 		$sale->quantity = $quantity;		
 		$sale->total = $product->price_iva * $quantity;
+		$sale->total_discount = $sale->total - $discount;
 		$sale->date = $date;
 		return $sale;		
 	}

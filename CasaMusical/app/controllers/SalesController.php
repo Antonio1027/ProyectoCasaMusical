@@ -16,21 +16,29 @@ class SalesController extends BaseController
 	public function Sales(){
 		$sales = $this->salesRepo->allSales();
 		if($sales)
-			return Response::json($sales,200);			
+			return Response::json($sales,200);
 		else
 			return Response::json(array('msg' =>'No se encontraron ventas'),404);
 	}
 
-	public function newSale(){
-		$data = Input::all();				
+	public function newSale(){		
+		$data = Input::all();		
 		$product = $this->productsRepo->findProduct($data['id']);
 		if($product && $data){
 			$reserve = $product->reserve - $data['quantity'];
 			if($reserve >=  0){				
-				$sale = $this->salesRepo->newSale($product,$data['quantity'],$data['date']);	
+				$sale = $this->salesRepo->newSale($product,(float)$data['quantity'],$data['date'],(float)$data['discount']);					
+				if(isset($data['discount'])){
+					$sale->discount = (float)$data['discount'];					
+				}
+				else
+					$sale->discount = 0;
+
 				$product->reserve = $reserve;
+
 				if($product->reserve <= $product->reorderpoint)
 					$product->status = 'pr';
+
 				if($sale->save() && $product->save())
 					return Response::json(array('msg'=>'Venta registrada'),201);
 

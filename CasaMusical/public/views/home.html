@@ -26,7 +26,14 @@
                             </lx-text-field>
                         </div>
                     </div>
-                </div>
+                     <div flex-container="row" flex-gutter="24">
+                        <div flex-item>
+                            <lx-text-field label="Descuento">
+                                <input type="number" ng-model="productSale.discount">
+                            </lx-text-field>
+                        </div>
+                    </div>
+                </div>                
                 <div class="p++">
                     <div flex-container="row" flex-gutter="24">
                         <div flex-item>
@@ -72,13 +79,13 @@
         <thead>
             <tr>
                 <th></th>
+                <th width="2%">En existencia</th>
                 <th><strong>Nombre</strong></th>
                 <th>Modelo</th>
                 <th>Clave</th>
-                <th>Cantidad sin iva</th>
+                <th>Cantidad con iva</th>
                 <th>Ganancia</th>
                 <th>Precio al publico</th>
-                <th>En existencia</th>
             </tr>
         </thead>
 
@@ -89,6 +96,9 @@
                     <a  href="#/edit/{{product.id}}" class="icon icon--l icon--blue-grey icon--circled mdi mdi--create" lx-tooltip="Editar producto" tooltip-position="top"></a>
                     <a ng-click="opendDialog('test', product.id)" class="icon icon--l icon--blue-grey icon--circled mdi mdi--local-atm" lx-tooltip="Realizar una venta" tooltip-position="top"></a>                    
                     <a ng-click="removeArticle(product.id)" ng-if="product.reserve == 0" class="icon icon--l icon--blue-grey icon--circled mdi mdi--cancel" lx-tooltip="Eliminar el producto" tooltip-position="top"></a>
+                </td>
+                <td width="2%">
+                    <span>{{product.reserve}}</span>
                 </td>
                 <td>
                     <span>{{product.product}}</span>
@@ -107,9 +117,6 @@
                 </td>
                 <td>
                     <span>{{product.price_iva | currency}}</span>
-                </td>
-                <td>
-                    <span>{{product.reserve}}</span>
                 </td>
             </tr>
         </tbody>
