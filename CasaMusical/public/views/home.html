@@ -84,8 +84,10 @@
                 <th>Modelo</th>
                 <th>Clave</th>
                 <th>Cantidad con iva</th>
+                <th>Ganancia mínima</th>
+                <th>Precio mínimo</th>                
                 <th>Ganancia</th>
-                <th>Precio al publico</th>
+                <th>Precio de venta</th>                
             </tr>
         </thead>
 
@@ -110,13 +112,19 @@
                     <span><i>{{product.key}}</i></span>
                 </td>
                 <td>
+                    <span>{{product.price_iva | currency}}</span>
+                </td>
+                <td>
+                    <span>{{product.gain_min | currency}}</span>
+                </td>
+                <td>
                     <span>{{product.price | currency}}</span>
                 </td>
                 <td>
-                    <span>{{product.gain | currency}}</span>
+                    <span>{{product.gain_max | currency}}</span>
                 </td>
                 <td>
-                    <span>{{product.price_iva | currency}}</span>
+                    <span>{{product.price_sale | currency}}</span>
                 </td>
             </tr>
         </tbody>

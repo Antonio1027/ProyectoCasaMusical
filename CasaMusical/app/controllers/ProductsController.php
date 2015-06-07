@@ -12,10 +12,10 @@ class ProductsController extends BaseController
 	}
 	
 	public function newProduct(){		
-		$data = Input::all();
+		$data = Input::all();		
 		if(isset($data['provider_id']['id']))
-			$data['provider_id'] = $data['provider_id']['id'];
-		$product = $this->productRepo->newProduct();
+			$data['provider_id'] = $data['provider_id']['id'];				
+		$product = $this->productRepo->newProduct();		
 		$manager = new ProductManager($product,$data);		
 		if($manager->save()){
 			return Response::json(array('msg'=>'Producto registrado'),201);//recurso creado

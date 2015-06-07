@@ -26,25 +26,25 @@
         </div>
 
         <div class="grid__col4">
-                <lx-text-field label="Precio sin iva" fixed-label="true" icon="keyboard-arrow-right" error="!form.price.$valid">
-                    <input type="text" name="price" ng-model="product.price" ng-pattern="regex_number" required>
+                <lx-text-field label="Precio con iva" fixed-label="true" icon="keyboard-arrow-right" error="!form.price.$valid">
+                    <input type="text" name="price" ng-model="product.price_iva" ng-pattern="regex_number" required>
                 </lx-text-field>
                 <ul class="form-error form-error-margin" ng-if="error.price">
+                    <li>{{error.price_iva[0]}}</li>
+                </ul>               
+
+                <lx-text-field label="Precio minimo" fixed-label="true" icon="keyboard-arrow-right" error="!form.price_iva.$valid">
+                    <input type="text" name="price_iva" ng-model="product.price" ng-pattern="regex_number" required>
+                </lx-text-field>
+                <ul class="form-error form-error-margin" ng-if="error.price_iva">
                     <li>{{error.price[0]}}</li>
                 </ul>
 
-                <lx-text-field label="Ganancias" fixed-label="true" icon="keyboard-arrow-right" error="!form.gain.$valid">
-                    <input type="text" name="gain" ng-model="product.gain" ng-pattern="regex_number" required>
-                </lx-text-field>
-                <ul class="form-error form-error-margin" ng-if="error.gain">
-                    <li>{{error.gain[0]}}</li>
-                </ul>
-
-                <lx-text-field label="Precio al publico" fixed-label="true" icon="keyboard-arrow-right" error="!form.price_iva.$valid">
-                    <input type="text" name="price_iva" ng-model="product.price_iva" ng-pattern="regex_number" required>
+                <lx-text-field label="Precio de venta" fixed-label="true" icon="keyboard-arrow-right" error="!form.price_iva.$valid">
+                    <input type="text" name="price_iva" ng-model="product.price_sale" ng-pattern="regex_number" required>
                 </lx-text-field>
                 <ul class="form-error form-error-margin" ng-if="error.price_iva">
-                    <li>{{error.price_iva[0]}}</li>
+                    <li>{{error.price_sale[0]}}</li>
                 </ul>
         </div>
 
@@ -78,7 +78,7 @@
             <ul class="form-error form-error-margin" ng-if="error.provider_id">
                 <li>{{error.provider_id[0]}}</li>
             </ul>
-        </div>
+        </div>        
     </div>
     <div class="text-center">
         <button type="submit" class="btn btn--xl btn--blue btn--fab" lx-ripple><i class="mdi mdi--add"></i></button>
