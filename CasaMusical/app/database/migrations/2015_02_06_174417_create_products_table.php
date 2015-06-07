@@ -18,9 +18,11 @@ class CreateProductsTable extends Migration {
 			$table->string('key');
 			$table->string('product');
 			$table->string('model');
-			$table->float('price')->unsigned();
-			$table->float('gain')->unsigned();
 			$table->float('price_iva')->unsigned();
+			$table->float('gain_min')->unsigned();
+			$table->float('price')->unsigned();
+			$table->float('gain_max')->unsigned();
+			$table->float('price_sale')->unsigned();
 			$table->integer('reorderpoint')->unsigned();
 			$table->integer('reserve')->unsigned();					
 			$table->enum('status',['r','pr']);			

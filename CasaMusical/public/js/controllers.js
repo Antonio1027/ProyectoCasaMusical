@@ -174,7 +174,7 @@
 		function counttotal(data){
 			$scope.totalsales = 0;
 			data.forEach(function(element){
-				$scope.totalsales += parseInt(element.total);
+				$scope.totalsales += parseInt(element.total_discount);
 			});
 		}
 

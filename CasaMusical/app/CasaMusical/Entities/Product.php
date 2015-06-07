@@ -10,16 +10,18 @@ class Product extends \Eloquent {
 	protected $dates = array('deleted_at');
 
 	protected $fillable = array(
+							'key',
 							'product',
 							'model',
-							'price',
-							'gain',
 							'price_iva',
+							'gain_min',
+							'price',
+							'gain_max',
+							'price_sale',
 							'reorderpoint',
 							'reserve',
-							'key',
-							'provider_id',
-							'status');
+							'status',
+							'provider_id');
 	public function getsales(){
 		return $this->hasMany('CasaMusical\Entities\Sale','product_id');
 	}
