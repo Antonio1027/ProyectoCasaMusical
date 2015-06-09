@@ -58,6 +58,14 @@ class ProductsController extends BaseController
 			return Response::json(array('msg'=>'Producto actualizado'),200);//peticion exitosa
 		else
 			return Response::json(array('errors'=>$manager->getErrors()),422);//error de validacion
+	}
+
+	public function productsByProvider($provider_id){
+		$products = $this->productRepo->productsByProvider($provider_id);									
+		if($products->count())
+			return Response::json($products,200);//peticion exitosa
+		else
+			return Response::json(array('msg'=>'No se encontraron resultados'),200);//peticion exitosa
 	}	
 }
  ?>

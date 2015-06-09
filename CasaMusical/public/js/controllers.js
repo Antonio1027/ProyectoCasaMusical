@@ -7,6 +7,8 @@
 		$scope.regex_number = /^[0-9]*$/;
 		$scope.number = 0;
 		$scope.prcb = false;
+		$scope.providers = [];
+		$scope.globalFunction = casamusicalService;
 
 		$scope.togglePR = function(){
 			if($scope.prcb)
@@ -75,12 +77,37 @@
 		$scope.closingDialog = function(){
 			$scope.productSale.quantity = 0;
 			$scope.productSale.discount = 0;
-		};
+		};		
+
+		$scope.providerProducts = function(){			
+			casamusicalService.getArticlesByProvider($scope.providers.provider.id)
+			.then(function(data){
+				$scope.products = data;
+				respProducts = data;				
+			},
+			function(error){
+				LxNotificationService.warning(error.msg);
+			});
+		}
+
+		$scope.clear = function(){
+			$scope.providers.provider = {};			
+			casamusicalService.getArticles()
+			.then(function (data){
+				$scope.products = data[0];				
+				$scope.providers = data[1];
+				respProducts = data[0];
+			},
+			function(error){
+				LxNotificationService.error(error.msg);
+			});			
+		}
 
 		casamusicalService.getArticles()
 			.then(function (data){
-				$scope.products = data;				
-				respProducts = data;
+				$scope.products = data[0];				
+				$scope.providers = data[1];
+				respProducts = data[0];
 			},
 			function(error){
 				LxNotificationService.error(error.msg);

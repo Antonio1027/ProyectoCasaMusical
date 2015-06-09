@@ -38,4 +38,5 @@ Route::get('reorderPointProducts',array('as'=>'reorderPointProducts','uses'=>'Ut
 Route::get('providersList',array('as'=>'providersList','uses'=>'UtilsController@providersList'));
 Route::get('ordersReport',array('as'=>'ordersReport','uses'=>'ReportsController@ordersReport'));
 Route::get('productsCatalog',array('as'=>'productsCatalog','uses'=>'ReportsController@productsCatalog'));
+Route::get('productsByProvider/{id}',array('as'=>'productsByProvider','uses'=>'ProductsController@productsByProvider'));
 

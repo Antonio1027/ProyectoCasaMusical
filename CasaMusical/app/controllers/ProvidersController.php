@@ -1,6 +1,7 @@
 <?php 
 
 use CasaMusical\Repositories\ProvidersRepo;
+use CasaMusical\Repositories\ProductsRepo;
 use CasaMusical\Managers\ProviderManager;
 
 class ProvidersController extends BaseController
@@ -54,8 +55,7 @@ class ProvidersController extends BaseController
 			return Response::json(array('msg'=>'Proveedor eliminado'),200);
 		else
 			return Response::json(array('msg'=>'Proveedor no eliminado'),400);
-	}
-
+	}	
 }
 
  ?>

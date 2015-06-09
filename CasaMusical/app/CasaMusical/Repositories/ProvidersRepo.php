@@ -20,8 +20,7 @@ class ProvidersRepo extends \Eloquent
 	public function deleteProvider($id){
 		$provider = Provider::find($id)->delete();
 		return $provider;
-	}
-
+	}	
 }
 
  ?>

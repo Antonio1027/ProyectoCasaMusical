@@ -21,6 +21,11 @@ class ProductsRepo extends \Eloquent
 		else
 			return false;
 	}
+
+	public function productsByProvider($id){
+		$products = Product::where('provider_id','=',$id)->get();
+		return $products;
+	}
 }
 
  ?>

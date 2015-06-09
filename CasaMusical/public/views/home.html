@@ -64,13 +64,24 @@
                     <div style="float: left">
                         <lx-search-filter theme="dark" model="searchArticle.key" filter-width="100%" placeholder="Buscar por clave"></lx-search-filter>
                     </div>
+                    <div class="grid__col4">                    
+                        <lx-select ng-model="providers.provider" placeholder="Selecciona un proveedor" choices="providers" floating-label style="margin-top:8px" ng-change="providerProducts()" theme="white">
+                            <lx-select-selected>
+                                {{ $selected.name }}
+                            </lx-select-selected>
+
+                            <lx-select-choices>
+                                {{ $choice.name }}
+                            </lx-select-choices>
+                        </lx-select>
+                    </div>
+                    <button class="btn btn--m btn--blue btn--raised" lx-ripple ng-click="clear()">Todos</button>
                     <div class="toolbar__right">
                         <div class="btn btn--l switch colorwhite fr">
                             <input type="checkbox" id="switch1" class="switch__input" ng-model="prcb" ng-change="togglePR()">
                             <label for="switch1" class="switch__label">Punto de pedido</label>
-                        </div>
+                        </div>                        
                     </div>
-
                 </div>
             </div>
         </div>

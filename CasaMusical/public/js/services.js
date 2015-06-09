@@ -17,6 +17,20 @@
 			return deferred.promise;
 		}
 
+		function getArticlesByProvider(id){
+			var deferred = $q.defer();
+
+			$http.get('productsByProvider/' + id)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(error){
+					deferred.reject(error);
+				});
+
+			return deferred.promise;	
+		}
+
 		function postArticle(product){
 			var deferred = $q.defer();
 
@@ -187,6 +201,7 @@
 
 		return {
 			getArticles: getArticles,
+			getArticlesByProvider: getArticlesByProvider,
 			postArticle: postArticle,
 			putArticle: putArticle,
 			getArticle: getArticle,
