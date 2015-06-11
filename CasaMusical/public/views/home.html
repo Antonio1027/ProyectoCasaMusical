@@ -4,9 +4,12 @@
     <div class="dialog__header">
         <div class="toolbar bgc-light-blue-500 pl++">
             <span class="toolbar__label tc-white fs-title">
-                Ventas
+                Registro de venta
             </span>
 
+            <span class="toolbar__label tc-white fs-title" style="float:right">
+                Total : {{(product.price_sale * productSale.quantity) - productSale.discount | currency}}
+            </span>
             <div class="toolbar__right">
                 <button class="btn btn--l btn--white btn--icon" lx-ripple ng-click="addPerson()">
                     <i class="mdi mdi-plus"></i>
@@ -17,7 +20,7 @@
 
     <div class="dialog__content">
         <lx-tabs links-tc="light" links-bgc="light-blue-500" indicator="yellow-500" no-divider="true" layout="inline">
-            <lx-tab heading="Articulo">
+            <lx-tab heading="Articulo ---- {{product.product}}">
                 <div class="p++">
                     <div flex-container="row" flex-gutter="24">
                         <div flex-item>
@@ -107,7 +110,7 @@
             	
                 <td style="width: 192px;">
                     <a  href="#/edit/{{product.id}}" class="icon icon--l icon--blue-grey icon--circled mdi mdi--create" lx-tooltip="Editar producto" tooltip-position="top"></a>
-                    <a ng-click="opendDialog('test', product.id)" class="icon icon--l icon--blue-grey icon--circled mdi mdi--local-atm" lx-tooltip="Realizar una venta" tooltip-position="top"></a>                    
+                    <a ng-click="opendDialog('test', product)" class="icon icon--l icon--blue-grey icon--circled mdi mdi--local-atm" lx-tooltip="Realizar una venta" tooltip-position="top"></a>                    
                     <a ng-click="removeArticle(product.id)" ng-if="product.reserve == 0" class="icon icon--l icon--blue-grey icon--circled mdi mdi--cancel" lx-tooltip="Eliminar el producto" tooltip-position="top"></a>
                 </td>
                 <td width="2%">

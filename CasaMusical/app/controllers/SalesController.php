@@ -22,7 +22,7 @@ class SalesController extends BaseController
 	}
 
 	public function newSale(){		
-		$data = Input::all();		
+		$data = Input::all();	
 		$product = $this->productsRepo->findProduct($data['id']);
 		if($product && $data){
 			$reserve = $product->reserve - $data['quantity'];

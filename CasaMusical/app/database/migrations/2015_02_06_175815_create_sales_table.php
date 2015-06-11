@@ -18,8 +18,7 @@ class CreateSalesTable extends Migration {
 			$table->integer('quantity')->unsigned();						
 			$table->float('total')->unsigned();
 			$table->float('discount')->unsigned();
-			$table->float('total_discount')->unsigned();
-			$table->float('price')->unsigned();
+			$table->float('total_discount')->unsigned();			
 			$table->string('date')->nullable();
 
 			$table->integer('product_id')->unsigned();

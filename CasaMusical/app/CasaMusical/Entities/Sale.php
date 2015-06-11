@@ -3,15 +3,12 @@
 namespace CasaMusical\Entities;
 
 class Sale extends \Eloquent {
-	protected $fillable = [
-							'product',
-							'model',
+	protected $fillable = [							
 							'quantity',
-							'price',
 							'total',
-							'product_id',
 							'discount',
-							'total_discount'
+							'total_discount',							
+							'product_id'
 						];	
 	public function getproduct(){
 		return $this->belongsTo('CasaMusical\Entities\Product','product_id');

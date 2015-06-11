@@ -8,7 +8,7 @@ class SalesRepo extends \Eloquent
 	public function allSales(){
 		return Sale::join('products','sales.product_id','=','products.id')
 					->orderBy('sales.created_at','Desc')
-					->select('sales.*','products.price_iva','products.product','products.model')
+					->select('sales.*','products.price_sale','products.product','products.model')
 					->get();
 	}	
 
@@ -16,7 +16,8 @@ class SalesRepo extends \Eloquent
 		$sale = new Sale();	
 		$sale->product_id = $product->id;		
 		$sale->quantity = $quantity;		
-		$sale->total = $product->price_iva * $quantity;
+		$sale->total = $product->price_sale * $quantity;
+		$sale->discount = $discount;
 		$sale->total_discount = $sale->total - $discount;
 		$sale->date = $date;
 		return $sale;		

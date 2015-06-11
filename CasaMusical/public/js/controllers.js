@@ -67,11 +67,14 @@
 				LxNotificationService.warning('La cantidad de articulos debe ser un entero y debe contener una fecha de venta');
 		};
 
-		$scope.opendDialog = function(dialogId, id){
+		$scope.opendDialog = function(dialogId, product){
 			$scope.statussale = 1;
-			$scope.productSale.id = id;
+			$scope.product = product;			
+			$scope.productSale.id = product.id;
+			$scope.productSale.quantity = 0;
+			$scope.productSale.discount = 0;
 			$scope.productSale.date = new Date( Date.now() );
-		    LxDialogService.open(dialogId);
+		    LxDialogService.open(dialogId,product);
 		};
 
 		$scope.closingDialog = function(){
