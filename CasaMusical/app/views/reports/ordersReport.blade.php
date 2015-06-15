@@ -5,8 +5,9 @@
 	<title>Reporte de pedidos</title>
 	<style>	
 		body{
-			font-family: 'roboto', sans-serif;
+			font-family: 'roboto', sans-serif;			
 			font-size: 11px;
+			text-align: center;
 		}
 		.table-report{
 			border-collapse: collapse;
@@ -27,29 +28,30 @@
 </head>
 <body>
 	<div class="container">
-		<table class="table-report" width="100%">
-			<tr>
-				<th colspan = "6">Lista de pedidos</th>
-			</tr>
-			<tr>
-				<th>#</th>
-				<th>Reserva</th>
-				<th>Articulos</th>
-				<th>Precio</th>
-				<th>Proveedor</th>				
-				<th>Tiempo de entrega</th>
-			</tr>
-			@foreach($data as $key => $product)
-				<tr>
-					<td>{{$key + 1}}</td>
-					<td>{{$product['reserve']}}</td>
-					<td>{{$product['product']}}</td>
-					<td>${{number_format($product['price'],2,'.',',')}}</td>
-					<td>{{$product['name']}}</td>					
-					<td>{{$product['delivery_time']}}</td>
-				</tr>
-			@endforeach
-		</table>
+		<h2>Lista de pedidos</h2>
+		@foreach($data as $key => $provider)
+			@if(count($provider['getproducts']))
+				<h4>{{$provider['name']}}</h1>
+				<table class="table-report" width="100%">			
+					<tr>
+						<th>#</th>
+						<th>Reserva</th>
+						<th>Articulos</th>
+						<th>Modelo</th>
+						<th>Precio</th>												
+					</tr>				
+					@foreach($provider['getproducts'] as $key => $product)
+						<tr>
+							<td width="10%">{{$key + 1}}</td>		
+							<td width="10%">{{$product['reserve']}}</td>
+							<td width="50%">{{$product['product']}}</td>
+							<td width="20%">{{$product['model']}}</td>
+							<td width="10%">${{number_format($product['price_sale'],2,'.',',')}}</td>																		
+						</tr>
+					@endforeach
+				</table>
+			@endif
+		@endforeach
 	</div>	
 </body>
 </html>

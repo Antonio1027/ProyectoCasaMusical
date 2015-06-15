@@ -42,7 +42,7 @@ class ProductsController extends BaseController
 	}
 
 	public function updateProduct(){				
-		$data = Input::all();
+		$data = Input::all();		
 		if(isset($data['provider_id']['id']))
 			$data['provider_id'] = $data['provider_id']['id'];		
 
